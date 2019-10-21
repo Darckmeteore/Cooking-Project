@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-//const bcrypt = require('bcryptjs');
-//import * as bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.page.html',
@@ -21,7 +20,7 @@ export class SignupPage implements OnInit {
     }
 
     btnclick(){
-      //this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
+      this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
         this.http.post('http://localhost:3000/api/LoginData',{pseudo: this.LoginData.createEmail, password: this.LoginData.createPassword})
         .subscribe(data => {
            console.log(data['_body']);
