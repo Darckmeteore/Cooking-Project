@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LoadingController, NavController } from '@ionic/angular';
+import { LoadingController, NavController, Platform } from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
 
 
@@ -13,10 +13,13 @@ export class MealsPage {
 
   meals : any;
   api : RestService;
+  devWidth: any;
+  
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController) {
+  constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
 
     this.api = restapi;
+    this.devWidth = this.plateform.width();
   }
 
   async getMeals() {

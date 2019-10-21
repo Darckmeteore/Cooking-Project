@@ -23,7 +23,9 @@ function createMeal(req, res) {
 
   const newMeal = Models.Meal ({
     name: req.body.name,
-    description : req.body.description
+    description : req.body.description,
+    level : req.body.level
+
   });
 
   newMeal.save(function(err) {
@@ -35,10 +37,19 @@ function createMeal(req, res) {
 function getAllMeals(req, res) {
   const Models = require('../models');
 
+  Models.Meal.find({}).sort({level: 1}).exec(function(err, meals) {
+    if (err) throw err;
+    res.json(meals);
+  });
+
+  /*
+
   Models.Meal.find({}, function(err, meals) {
     if (err) throw err;
     res.json(meals);
   });
+
+  */
 }
 
 module.exports.creatlogindata = creatlogindata;

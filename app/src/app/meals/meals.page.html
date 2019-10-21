@@ -10,20 +10,24 @@
 </ion-header>
 
 <ion-content>
-    <ion-list *ngFor="let meal of meals">
-        <ion-grid>
-            <ion-row>
-                <ion-col align-self-center>
-                    <ion-card routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
-                        <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
-                        <ion-card-header>
-                            <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
-                            <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
-                        </ion-card-header>
-                    </ion-card>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-list>
 
+
+    <!-- TODO We need to check if the screen size is a certain size we display more that one row -->
+
+    <ion-list *ngFor="let meal of meals">
+        <ion-card *ngIf="meal.level <= 1 && devWidth <= 425" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
+            <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
+            <ion-card-header>
+                <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
+                <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+        <ion-card *ngIf="meal.level > 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
+            <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
+            <ion-card-header>
+                <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
+                <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+    </ion-list>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, Platform } from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class MealPage implements OnInit {
   meal : any;
   api : RestService;
   id : string;
+  devWidth: any;
 
   constructor(public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
     this.api = restapi;
@@ -37,6 +38,7 @@ export class MealPage implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params : ParamMap)=> {
       this.id=params.get('id');
+      
     });
     this.getMeal(this.id);
   }
