@@ -5,9 +5,23 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+
+
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private http : Client ) { }
+
+  private login = {
+    email : string,
+    password : string
+  };
+
+  /**
+   *
+   */
+  tryLogin() {
+
+  }
 
   ngOnInit() {
   }
