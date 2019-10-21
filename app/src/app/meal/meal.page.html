@@ -4,7 +4,7 @@
             <ion-back-button defaultHref="/meals"></ion-back-button>
         </ion-buttons>
 
-        <ion-title>Meal n. {{id}}</ion-title>
+        <ion-title *ngIf="meal">Meal n. {{meal.name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 

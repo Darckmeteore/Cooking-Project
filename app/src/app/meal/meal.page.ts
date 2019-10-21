@@ -25,7 +25,6 @@ export class MealPage implements OnInit {
     await loading.present();
     await this.api.getMeal(this.id)
       .subscribe(res => {
-        console.log(res);
         this.meal = res[0];
         loading.dismiss();
       }, err => {
@@ -39,7 +38,6 @@ export class MealPage implements OnInit {
     this.route.paramMap.subscribe((params : ParamMap)=> {
       this.id=params.get('id');
     });
-    console.log("Current id: " + this.id);
     this.getMeal(this.id);
   }
 
