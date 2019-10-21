@@ -25,7 +25,7 @@ console.log("waiting on localhost:3000");
 //Pour se connecter à la DB
 
 const mongoose = require('mongoose');
-database = 'mongodb://localhost:27017/todo';
+database = 'mongodb://localhost:27017/jcp-diet';
 mongoose.connect(database,(err)=> {
 	if (err)
 		throw err;

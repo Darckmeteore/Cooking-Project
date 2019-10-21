@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+<ion-buttons slot="start">
+  <ion-icon slot="icon-only" name="arrow-round-back" routerLink="/home">
+  </ion-icon>
+</ion-buttons>
 
+<ion-content class="ion-padding">
+  <h2>Create Account</h2>
+  <form (ngSubmit)="btnclick()">
+    <ion-input [(ngModel)]="LoginData.createEmail" name="createEmail" type="text" placeholder="email"></ion-input>
+    <ion-input [(ngModel)]="LoginData.createPassword" name="createPassword" type="password" placeholder="password"></ion-input>
+    <ion-button type="submit" routerLink="/home" > click me </ion-button>
+  </form>
 </ion-content>
