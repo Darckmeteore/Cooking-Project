@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +11,11 @@ import { Component, OnInit } from '@angular/core';
 
 export class LoginPage implements OnInit {
 
-  constructor(private http : Client ) { }
+  constructor(private http : HttpClient ) { }
 
   private login = {
-    email : string,
-    password : string
+    email : "",
+    password : ""
   };
 
   /**
