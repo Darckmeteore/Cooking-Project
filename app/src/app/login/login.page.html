@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Logint</h2>
+  <form (ngSubmit)="tryLogin()">
+    <ion-input [(ngModel)]="" name="createEmail" type="text" placeholder="email"></ion-input>
+    <ion-input [(ngModel)]="LoginData.createPassword" name="createPassword" type="password" placeholder="password"></ion-input>
+    <ion-button type="submit" routerLink="/home" > click me </ion-button>
+  </form>
+</ion-content>
