@@ -27,7 +27,6 @@ export class MealsPage {
     await loading.present();
     await this.api.getMeals()
       .subscribe(res => {
-        console.log(res);
         this.meals = res;
         loading.dismiss();
       }, err => {
