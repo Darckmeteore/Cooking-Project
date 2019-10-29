@@ -2,6 +2,7 @@ function creatlogindata(req,res){
   const Models = require('../models');
   const newLoginData = Models.LoginData ({
       pseudo: req.body.pseudo,
+      email: req.body.email,
       password: req.body.password
   });
   newLoginData.save(function(err) {
@@ -12,7 +13,7 @@ function creatlogindata(req,res){
 
 function getUser(req,res){
   const Models = require('../models');
-  Models.LoginData.find({ pseudo: req.body.pseudo}, function (err, logindatas){
+  Models.LoginData.find({ pseudo: req.query.pseudo , email: req.query.email}, function (err, logindatas){
     if (err) throw err;
     res.json(logindatas);
   });

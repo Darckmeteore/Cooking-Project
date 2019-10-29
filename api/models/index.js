@@ -8,6 +8,7 @@ const Schema = mongoose.Schema; //majuscule car instance d'un objet (tester si Ã
 const LoginDataSchema = new Schema (
 {
 	pseudo : String,
+	email : String,
 	password : String,
 	done : {
 		type : Boolean,
