@@ -1,5 +1,9 @@
 const router = require('express').Router();
-const controller = require('../controllers')
+const controller = require('../controllers');
+
+router.get('/api/LoginData',(req,res)=>{
+    controller.getUser(req,res);
+});
 
 router.post('/api/LoginData',(req,res)=>{
     controller.creatlogindata(req,res);

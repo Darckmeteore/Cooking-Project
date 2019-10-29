@@ -10,6 +10,14 @@ function creatlogindata(req,res){
   });
 }
 
+function getUser(req,res){
+  const Models = require('../models');
+  Models.LoginData.find({ pseudo: req.body.pseudo}, function (err, logindatas){
+    if (err) throw err;
+    res.json(logindatas);
+  });
+}
+
 function getMeal(req, res) {
   const Models = require('../models');
   Models.Meal.find({_id : req.params.id}, function(err, meal) {
@@ -51,7 +59,7 @@ function getAllMeals(req, res) {
 
   */
 }
-
+module.exports.getUser = getUser;
 module.exports.creatlogindata = creatlogindata;
 module.exports.getMeal = getMeal;
 module.exports.createMeal = createMeal;
