@@ -23,7 +23,7 @@ export class SignupPage implements OnInit {
     btnclick(){
       this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
       this.http.get(`http://localhost:3000/api/LoginData?pseudo=${this.LoginData.createPseudo}&email=${this.LoginData.createEmail}`)
-      .subscribe(data => {
+      .subscribe( (data : any[]) => {
         console.log(data);
          if (data.length == 0){
            console.log("data = nul we can create a user");
