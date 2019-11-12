@@ -4,10 +4,93 @@
             <ion-back-button defaultHref="/meals"></ion-back-button>
         </ion-buttons>
 
-        <ion-title *ngIf="meal">Meal n. {{meal.name}}</ion-title>
+        <ion-title *ngIf="meal">Recette {{meal.name}} (niveau {{meal.level}})</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+    <div *ngIf="meal">
+        <ion-card>
+            <img src="https://thenypost.files.wordpress.com/2019/08/dick-pic-originates.jpg" />
+            <ion-card-header>
+                <ion-card-title>{{meal.name}} pour 1 personne</ion-card-title>
+                <ion-card-subtitle>Environ 30 min (€€)</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+                <br>
+                <ion-text>
+                    <h1>Ingredients</h1>
+                    <br>
+                </ion-text>
 
+                <ion-text>
+                    <span style="margin-left: 15px;">• 1 Banane</span>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <span style="margin-left: 15px;">• 2 Pommes</span>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <span style="margin-left: 15px;">• 5 Oeufs</span>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <span style="margin-left: 15px;">• 200ml de Lait</span>
+                    <br>
+                </ion-text>
+
+                <br>
+                <hr noshade>
+                <br>
+
+                <ion-text>
+                    <h1>Recette</h1>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <h2 style="margin-left: 5px;">Etape 1</h2>
+                    <br>
+                    <p style="margin-left: 15px;">Bah faut faire la cuisine, eazeaze a eaz eazeazeaz eazeazeaze zarazrazraz razrazr azrazrzar zarzar azrzar zarazr zrazr zarza zrazr azrzar azraz rzaraz rzarzaraz</p>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <h2 style="margin-left: 5px;">Etape 2</h2>
+                    <br>
+                    <p style="margin-left: 15px;">Bah faut faire chauffer le four ezy huirfeziugfiezhfgijez ihezfhyezhueznfjzebfihezbfj ezjebfeihzybfizehjbfihezbfhuezbfhezfhezbfihez fjezfioezj iojfeziofu bfezibfezubf ezf ezjiofhe oufe zkfneziobfuezi bfeiofbeziu vie</p>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <h2 style="margin-left: 5px;">Etape 3</h2>
+                    <br>
+                    <p style="margin-left: 15px;">Bah cuire jzeriheiur huh ezigrezr ezygryezgry ezgjr jezhrihuerhezihgr kah haia hoia hoiauoguia gahaugiyaf yiahgihy</p>
+                    <br>
+                </ion-text>
+
+                <ion-text>
+                    <h2 style="margin-left: 5px;">Etape 4</h2>
+                    <br>
+                    <p style="margin-left: 15px;">Bah faut manger kjarzhzh grazeyrgaerhahrijzahru rjoza hhr azjrh iuazhriuza hihhiazuri hraziu rhaziur aziurgazrgaz iuhrzaiu hriuazr rziohza uirhzaoirhz aiurziuah zuihruiza hrjzahriuzagriazgrzaygrozkrhaziugri zaugay </p>
+                    <br>
+                </ion-text>
+
+                <hr noshade>
+                <br>
+
+                <ion-text style="text-align: justify; text-justify: inter-word;">
+                    <h1>Vous avez fait ce plat ? Alors partagez le à vos amis et gagnez de l'expérience pour pouvoir avoir acces à d'autres plats !</h1>
+                    <br>
+                    <ion-button expand="block" onclick="openMenu()">Partager son plat</ion-button>
+                </ion-text>
+
+
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
