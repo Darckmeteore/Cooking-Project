@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
    *
    */
   tryLogin() {
-
+    
   }
 
   ngOnInit() {

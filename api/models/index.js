@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema; //majuscule car instance d'un objet (tester si ça marche avec une minuscule)
 
 
+// LOGIN AND SUBSCRIBE SCHEMA
 const LoginDataSchema = new Schema (
 {
 	pseudo : String,
@@ -18,6 +19,12 @@ const LoginDataSchema = new Schema (
 		default : Date.now
 	}
 });
+
+
+// USER SCHEMA
+const user = new Schema (
+
+)
 
 
 const MealSchema = new Schema (
