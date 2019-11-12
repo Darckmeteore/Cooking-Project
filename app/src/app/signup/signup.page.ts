@@ -22,7 +22,7 @@ export class SignupPage implements OnInit {
 
     btnclick(){
       this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
-      this.http.get(`http://localhost:3000/api/LoginData?pseudo=${this.LoginData.createPseudo}&email=${this.LoginData.createEmail}`)
+      this.http.get(`http://localhost:3000/api/LoginData?&email=${this.LoginData.createEmail}`)
       .subscribe( (data : any[]) => {
         console.log(data);
          if (data.length == 0){
@@ -33,8 +33,10 @@ export class SignupPage implements OnInit {
              }, error => {
               console.log(error);
             });
-           console.log('envoyé');
+           console.log('push in db');
            console.log(this.LoginData);
+         }else{
+
          }
         }, error => {
          console.log(error);
