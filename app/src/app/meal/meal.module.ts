@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { MealPage } from './meal.page';
 
+import { Camera } from '@ionic-native/camera/ngx';
 const routes: Routes = [
   {
     path: '',
@@ -21,6 +22,10 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  providers: [
+    Camera    
+  ],
+  
   declarations: [MealPage]
 })
 export class MealPageModule {}

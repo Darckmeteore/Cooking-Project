@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { LoadingController, Platform } from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-meal',
@@ -13,8 +14,9 @@ export class MealPage implements OnInit {
   api : RestService;
   id : string;
   devWidth: any;
+  currentImage: any;
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
+  constructor(private camera: Camera,public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
     this.api = restapi;
   }
 
@@ -42,5 +44,19 @@ export class MealPage implements OnInit {
     });
     this.getMeal(this.id);
   }
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
 
+    this.camera.getPicture(options).then((imageData) => {
+      this.currentImage = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      // Handle error
+      console.log("Camera issue:" + err);
+    });
+  }
 }
