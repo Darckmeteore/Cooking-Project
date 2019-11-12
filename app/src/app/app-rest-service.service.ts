@@ -64,8 +64,8 @@ export class RestService {
   }
 
   // GET A USER
-  getUser(user:{}): Observable<any> {
+  // getUser(user:{}): Observable<any> {
 
-  }
+  // }
 
 }
