@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const controller = require('../controllers');
 
-router.get('/api/LoginData',(req,res)=>{
+router.get('/api/LoginData/:email',(req,res)=>{
     controller.getUser(req,res);
 });
 
