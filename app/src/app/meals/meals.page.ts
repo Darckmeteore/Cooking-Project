@@ -18,6 +18,8 @@ export class MealsPage {
 
   constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
 
+
+    
     this.api = restapi;
     this.devWidth = this.plateform.width();
   }

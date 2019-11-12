@@ -14,8 +14,10 @@
 
     <!-- TODO We need to check if the screen size is a certain size we display more that one row -->
 
+    <!-- && devWidth <= 425 -->
+
     <ion-list *ngFor="let meal of meals">
-        <ion-card *ngIf="meal.level <= 1 && devWidth <= 425" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
+        <ion-card *ngIf="meal.level <= 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
             <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
             <ion-card-header>
                 <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>

@@ -1,13 +1,16 @@
+import { LoginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './guards/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'meals', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [LoginGuard], data: { authGuardRedirect: 'login' } },
+  { path: 'home', loadChildren: './meals/meals.module#MealsPageModule', canActivate: [AuthGuard] },
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
-  { path: 'meal/:id', loadChildren: './meal/meal.module#MealPageModule' },
-  { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule' },  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'meal/:id', loadChildren: './meal/meal.module#MealPageModule', canActivate: [AuthGuard] },
+  { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule', canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoginGuard] },
 
 ];
 
