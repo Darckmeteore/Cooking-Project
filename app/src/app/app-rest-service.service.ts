@@ -11,8 +11,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class RestService {
 
+  
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
@@ -35,6 +39,8 @@ export class RestService {
     return body || { };
   }
 
+
+  // GET ALL MEALS
   getMeals(): Observable<any> {
 
     const apiUrl = "http://localhost:3000/api/meals";
@@ -45,6 +51,8 @@ export class RestService {
 
   }
 
+
+  // GET A MEAL
   getMeal(id:any): Observable<any> {
 
     const apiUrl = "http://localhost:3000/api/meal/" + id;
@@ -55,15 +63,7 @@ export class RestService {
 
   }
 
-  /*
-  createTodo(data:any): Observable<any> {
-
-    const apiUrl = "http://localhost:3000/api/todo/";
-
-    return this.http.post(apiUrl, data, httpOptions).pipe(
-      catchError(this.handleError));
-
-  }
-  */
+  // GET A USER
+  //
 
 }
