@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RestService } from '../app-rest-service.service';
 import * as bcrypt from 'bcryptjs';
+import { AuthGuard } from '../guards/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,8 @@ export class LoginPage implements OnInit {
   constructor(private http : HttpClient,
               private rt: Router,
               private restapi: RestService,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController,
+              private auth : AuthGuard) {
 
     this.api = restapi;
     this.router = rt;
@@ -54,6 +56,7 @@ export class LoginPage implements OnInit {
   
     let match = await bcrypt.compare(password, hashed);
     if(match) {
+      this.auth.loggedIn = true;
       this.router.navigateByUrl('/home');
     }
     else {
