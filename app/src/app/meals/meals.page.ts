@@ -56,7 +56,7 @@ export class MealsPage {
   
 }
 
-//CAMERA 
+//CAMERAA 
 const options: CameraOptions = {
   quality: 100,
   destinationType: this.camera.DestinationType.FILE_URI,
