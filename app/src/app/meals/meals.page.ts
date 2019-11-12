@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LoadingController, NavController, Platform } from '@ionic/angular';
+import { LoadingController, NavController, Platform, MenuController } from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
 
 
@@ -16,10 +16,14 @@ export class MealsPage {
   devWidth: any;
   
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
-
+  constructor(private menu : MenuController, public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
     this.api = restapi;
     this.devWidth = this.plateform.width();
+  }
+
+  openMenu() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
   }
 
   async getMeals() {
