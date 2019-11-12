@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/Debzou/JCP-diet#readme",
   "dependencies": {
+    "@ionic-native/camera": "^5.16.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.5"
+    "mongoose": "^5.7.7"
   }
 }
