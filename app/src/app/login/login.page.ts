@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { RestService } from '../app-rest-service.service';
 import * as bcrypt from 'bcryptjs';
-
 
 @Component({
   selector: 'app-login',
@@ -12,26 +14,76 @@ import * as bcrypt from 'bcryptjs';
 
 export class LoginPage implements OnInit {
 
-  constructor(private http : HttpClient ) { }
+  api   : RestService;
+  router : Router;
+  login : {};
+
+
+  /**
+   * 
+   * @param http 
+   */
+  constructor(private http : HttpClient,
+              private rt: Router,
+              private restapi: RestService,
+              private loadingController: LoadingController) {
+
+    this.api = restapi;
+    this.router = rt;
+
+    this.login = {
+      email : "",
+      password : ""
+    }
+
+   }
+
 
   /**
    * 
    */
-  public login = {
-    email : "",
-    password : ""
-  };
-
-
   ngOnInit() {
   }
 
 
-   /**
-   * Attempt a login by comparing mail and password in database
+  /**
+   * Checking for existing user in db
+   * @param user 
    */
-  tryLogin() {
-    console.log(this.login);
+  async checkPassword(password:string, hashed:string) {
+  
+    let match = await bcrypt.compare(password, hashed);
+    if(match) {
+      this.router.navigateByUrl('/home');
+    }
+    else {
+      console.log("Can't connect : Wrong email or password");
+    }
+
+  }
+
+
+   /**
+   * Attempt login
+   */
+  async tryLogin() {
+
+    let userInput = this.login;
+
+    const loading = await this.loadingController.create({
+      message: 'Loading'
+    });
+
+    await loading.present();
+    await this.api.getUser(userInput)
+      .subscribe(res => {
+        this.checkPassword(userInput['password'], res[0]['password'])
+        loading.dismiss();
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
+    
   }
 
 }
