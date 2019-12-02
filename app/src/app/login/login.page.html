@@ -14,25 +14,27 @@
 
     <ion-item>
       <ion-input formControlName="email" [(ngModel)]="login.email" name="email" type="text" placeholder="email" required></ion-input>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
     </ion-item>
-    <div class="validation-errors">
-      <ng-container *ngFor="let validation of validation_messages.email">
-        <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-          {{ validation.message }}
-        </div>
-      </ng-container>
-    </div>
+    
 
     <ion-item>
       <ion-input formControlName="password" [(ngModel)]="login.password" name="password" type="password" placeholder="password" required></ion-input>
-    </ion-item>
-    <div class="validation-errors">
+      <div class="validation-errors">
         <ng-container *ngFor="let validation of validation_messages.password">
           <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
             {{ validation.message }}
           </div>
         </ng-container>
       </div>
+    </ion-item>
+    
 
     <div padding>
       <ion-button type="submit" expand="block" color="primary">Login</ion-button>
