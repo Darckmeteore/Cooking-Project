@@ -12,6 +12,10 @@ realisation : string
 
 processing : String
 
+level_needed : int
+
+exp : int
+
 picture : string
 
 ## Format d'un ingredient
