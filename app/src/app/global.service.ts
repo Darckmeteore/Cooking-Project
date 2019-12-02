@@ -5,10 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalService {
 
-  public username: string;
+  public user: any;
 
   constructor() { 
-    this.username = "TEST";
   }
 
   updateUser(userID) {

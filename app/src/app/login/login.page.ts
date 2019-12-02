@@ -86,9 +86,7 @@ export class LoginPage implements OnInit {
         loading.dismiss(); 
 
         // Here we are sure that the person is logged in
-        //this.global.username = this.api.getUser(userInput);
-        console.log("coucou");
-        console.log(this.api.getUser(userInput));
+        this.global.user = res[0];
 
       }, err => {
         console.log(err);
