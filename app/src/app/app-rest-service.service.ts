@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 
+
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
@@ -11,10 +12,31 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class RestService {
 
-  constructor(private http: HttpClient) { }
 
+  /**
+   * BASE API URL
+   */
+  apiUrl : string
+
+
+  /**
+   * 
+   * @param http 
+   */
+  constructor(private http: HttpClient) {
+    this.apiUrl = "http://localhost:3000/api/";
+   }
+
+
+  /**
+   * 
+   * @param error 
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -30,40 +52,59 @@ export class RestService {
     return throwError('Something bad happened; please try again later.');
   }
 
+
+  /**
+   * 
+   * @param res 
+   */
   private extractData(res: Response) {
     let body = res;
     return body || { };
   }
 
+
+  /**
+   * 
+   */
   getMeals(): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/meals";
+    let url = this.apiUrl + "meals";
 
-    return this.http.get(apiUrl, httpOptions).pipe(
+    return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
 
   }
 
+
+  /**
+   * 
+   * @param id 
+   */
   getMeal(id:any): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/meal/" + id;
+    let url = this.apiUrl + "meal/" + id;
 
-    return this.http.get(apiUrl, httpOptions).pipe(
+    return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
 
   }
 
-  /*
-  createTodo(data:any): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/todo/";
+  /**
+   * 
+   * @param user 
+   */
+  getUser(user:any): Observable<any> {
 
-    return this.http.post(apiUrl, data, httpOptions).pipe(
-      catchError(this.handleError));
+    let url = this.apiUrl + 'LoginData/' + user['email'];
+
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError)
+    )
 
   }
-  */
 
 }

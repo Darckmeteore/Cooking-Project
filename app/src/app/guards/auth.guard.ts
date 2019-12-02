@@ -6,17 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  private loggedIn: boolean = false;
+  public loggedIn: boolean = false;
 
   constructor(
     private router: Router,
   ) {
-      this.loggedIn = true;
+      this.loggedIn = false;
 
       if (this.loggedIn) {
         this.router.navigate(['/']);
       } else {
-        this.router.navigate(['logout']);
+        this.router.navigate(['login']);
       }
   }
 

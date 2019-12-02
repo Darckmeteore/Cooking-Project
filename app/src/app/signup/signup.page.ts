@@ -25,7 +25,7 @@ export class SignupPage implements OnInit {
 
     btnclick(){
       this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
-      this.http.get(`http://localhost:3000/api/LoginData?&email=${this.LoginData.createEmail}`)
+      this.http.get('http://localhost:3000/api/LoginData/' + this.LoginData.createEmail)
       .subscribe( (data : any[]) => {
         console.log(data);
          if (data.length == 0){
