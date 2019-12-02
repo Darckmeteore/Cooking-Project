@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
     }
 
     /**
-     * Login form
+     * Login form group
      */
     this.loginForm = formBuilder.group({
       email : ['', Validators.compose([Validators.required, Validators.email])],
@@ -72,15 +72,16 @@ export class LoginPage implements OnInit {
 
 
   /**
-   * 
+   * On page init
    */
   ngOnInit() {
   }
 
 
   /**
-   * Checking for existing user in db
-   * @param user 
+   * Check password for authentication
+   * @param password 
+   * @param hashed 
    */
   async checkPassword(password:string, hashed:string) {
   
@@ -101,26 +102,32 @@ export class LoginPage implements OnInit {
    */
   async tryLogin() {
 
-    let userInput = this.login;
+    if(this.loginForm.valid) {
 
-    const loading = await this.loadingController.create({
-      message: 'Loading'
-    });
+      let userInput = this.login;
 
-    await loading.present();
-    await this.api.getUser(userInput)
-      .subscribe(res => {
-        this.checkPassword(userInput['password'], res[0]['password'])
-        loading.dismiss(); 
-
-        // Here we are sure that the person is logged in
-        this.global.user = res[0];
-
-      }, err => {
-        console.log(err);
-        loading.dismiss();
+      const loading = await this.loadingController.create({
+        message: 'Loading'
       });
-    
+
+      await loading.present();
+      await this.api.getUser(userInput)
+        .subscribe(res => {
+          this.checkPassword(userInput['password'], res[0]['password'])
+          loading.dismiss(); 
+
+          // Here we are sure that the person is logged in
+          this.global.user = res[0];
+
+        }, err => {
+          console.log(err);
+          loading.dismiss();
+        });
+
+    }
+    else {
+      console.log("Invalid form")
+    }
   }
 
 }
