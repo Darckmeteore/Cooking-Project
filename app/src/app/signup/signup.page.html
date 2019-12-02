@@ -1,15 +1,28 @@
+<ion-grid>
+	<ion-row justify-content-center>
+		<ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <form (ngSubmit)="btnclick()">
+			<div text-center>
+				<h4>Signup Form</h4>
+			</div>
+			<div padding>
+				<ion-item>
+					<ion-input [(ngModel)]="LoginData.createPseudo" name="createPseudo" type="text" placeholder="pseudo"></ion-input>
+				</ion-item>
 
-<ion-buttons slot="start">
-  <ion-icon slot="icon-only" name="arrow-round-back" routerLink="/home">
-  </ion-icon>
-</ion-buttons>
+				<ion-item>
+					<ion-input [(ngModel)]="LoginData.createEmail" name="createEmail" type="text" placeholder="email"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+					<ion-input [(ngModel)]="LoginData.createPassword" name="createPassword" type="password" placeholder="password"></ion-input>
+				</ion-item>
+			</div>
 
-<ion-content class="ion-padding">
-  <h2>Create Account</h2>
-  <form (ngSubmit)="btnclick()">
-    <ion-input [(ngModel)]="LoginData.createPseudo" name="createPseudo" type="text" placeholder="pseudo"></ion-input>
-    <ion-input [(ngModel)]="LoginData.createEmail" name="createEmail" type="text" placeholder="email"></ion-input>
-    <ion-input [(ngModel)]="LoginData.createPassword" name="createPassword" type="password" placeholder="password"></ion-input>
-    <ion-button type="submit" > click me </ion-button>
-  </form>
-</ion-content>
+			<div padding>
+				<ion-button size="large" type="submit" > Sign Up </ion-button>
+      </div>
+    </form>
+		</ion-col>
+	</ion-row>
+</ion-grid>
