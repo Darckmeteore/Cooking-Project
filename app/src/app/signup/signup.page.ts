@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as bcrypt from 'bcryptjs';
-@Component({
+import { Router } from '@angular/router';
+@Component({ 
   selector: 'app-signup',
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  router : Router;
   public LoginData = {
       createPseudo : "",
       createEmail : "",
@@ -15,7 +17,8 @@ export class SignupPage implements OnInit {
     public JCP = "mrtlagrossesalopedu74";
     constructor(
       private http : HttpClient,
-    ) { }
+      private rt : Router
+    ) { this.router = rt;}
 
     ngOnInit() {
     }
@@ -35,8 +38,10 @@ export class SignupPage implements OnInit {
             });
            console.log('push in db');
            console.log(this.LoginData);
+           this.router.navigateByUrl('/home');
          }else{
-
+          this.router.navigateByUrl('/signup');
+          console.log('Try again');
          }
         }, error => {
          console.log(error);
