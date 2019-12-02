@@ -28,9 +28,9 @@ const user = new Schema(
 
 const MealSchema = new Schema({
     name: String,
-    ingredients: Array,
+    ingredients: Object,
     realisation: String,
-    steps: Array,
+    steps: Object,
     level: {
         type: Number,
         default: 0

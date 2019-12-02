@@ -17,14 +17,21 @@
         <ion-card>
             <img src="https://thenypost.files.wordpress.com/2019/08/dick-pic-originates.jpg" />
             <ion-card-header>
-                <ion-card-title>{{meal.name}} pour 1 personne</ion-card-title>
-                <ion-card-subtitle>Environ 30 min (€€)</ion-card-subtitle>
+                <ion-card-title>{{meal.name}}</ion-card-title>
+                <ion-card-subtitle>{{meal.realisation}}</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
                 <br>
                 <ion-text>
                     <h1>Ingredients</h1>
                     <br>
+                </ion-text>
+
+                <ion-text *ngFor="let ingredient of meal.ingredients">
+
+                    <span style="margin-left: 15px;">• {{ingredient}}</span>
+                    <br>
+
                 </ion-text>
 
                 <ion-text>
