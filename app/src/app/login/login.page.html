@@ -5,8 +5,11 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h2>Login</h2>
 
+  <div>
+    <h2>Login</h2>
+  </div>
+  
   <form [formGroup]="loginForm" (ngSubmit)="tryLogin()">
 
     <ion-item>
@@ -18,14 +21,25 @@
           {{ validation.message }}
         </div>
       </ng-container>
-      </div>
+    </div>
 
     <ion-item>
       <ion-input formControlName="password" [(ngModel)]="login.password" name="password" type="password" placeholder="password" required></ion-input>
     </ion-item>
+    <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.password">
+          <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+    <div padding>
+      <ion-button type="submit" expand="block" color="primary">Login</ion-button>
+    </div>
 
   </form>
 
-  <ion-button type="submit" expand="full" color="primary">Login</ion-button>
+  
 
 </ion-content>
