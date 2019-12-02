@@ -27,7 +27,6 @@ const user = new Schema(
 )
 
 const MealSchema = new Schema({
-    mealId: Number,
     name: String,
     ingredients: Array,
     realisation: String,
@@ -47,7 +46,6 @@ const MealSchema = new Schema({
 });
 
 const IngredientSchema = new Schema({
-    ingredientId: Number,
     name: String,
     benefits: String,
     things_to_know: String

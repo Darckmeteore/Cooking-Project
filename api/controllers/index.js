@@ -92,17 +92,6 @@ function createIngredient(req, res) {
     });
 }
 
-
-
-/*
-
-Models.Meal.find({}, function(err, meals) {
-  if (err) throw err;
-  res.json(meals);
-});
-
-*/
-
 module.exports.getUser = getUser;
 module.exports.creatlogindata = creatlogindata;
 module.exports.getMeal = getMeal;
