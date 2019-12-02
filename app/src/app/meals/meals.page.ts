@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { GlobalService } from './../global.service';
 import { Component } from '@angular/core';
 
@@ -17,7 +18,7 @@ export class MealsPage {
   devWidth: any;
   
 
-  constructor(private global : GlobalService, private menu : MenuController, public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
+  constructor(private router : Router, private global : GlobalService, private menu : MenuController, public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
     this.api = restapi;
     this.devWidth = this.plateform.width();
     console.log(this.global.user);
@@ -51,6 +52,10 @@ export class MealsPage {
 
   delete(id:any) {
     console.log("delete");
+  }
+
+  logout() {
+    this.router.navigate(['logout']);
   }
 
   ngOnInit() {
