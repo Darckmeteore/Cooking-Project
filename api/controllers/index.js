@@ -13,7 +13,7 @@ function creatlogindata(req,res){
 
 function getUser(req,res){
   const Models = require('../models');
-  Models.LoginData.find({ pseudo: req.query.pseudo , email: req.query.email}, function (err, logindatas){
+  Models.LoginData.find({email: req.query.email}, function (err, logindatas){
     if (err) throw err;
     res.json(logindatas);
   });
