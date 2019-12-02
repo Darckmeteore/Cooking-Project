@@ -67,13 +67,10 @@ export class RestService {
    * 
    */
   getMeals(): Observable<any> {
-
     let url = this.apiUrl + "meals";
-
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
-
   }
 
 
@@ -82,14 +79,35 @@ export class RestService {
    * @param id 
    */
   getMeal(id:any): Observable<any> {
-
     let url = this.apiUrl + "meal/" + id;
-
     return this.http.get(url, httpOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
-
   }
+
+  /**
+   * 
+   */
+  getIngredients(): Observable<any> {
+    let url = this.apiUrl + "ingredients";
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+
+  /**
+   * 
+   * @param id 
+   */
+  getIngredient(id:any): Observable<any> {
+    let url = this.apiUrl + "ingredient/" + id;
+    return this.http.get(url, httpOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+
 
 
   /**
