@@ -10,9 +10,9 @@ ingredients : list of ids
 
 realisation : string
 
-processing : String
+steps : list of Strings
 
-level_needed : int
+level : int
 
 exp : int
 
