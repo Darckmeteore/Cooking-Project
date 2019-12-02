@@ -1,3 +1,4 @@
+import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { LoadingController } from '@ionic/angular';
@@ -28,7 +29,8 @@ export class LoginPage implements OnInit {
               private rt: Router,
               private restapi: RestService,
               private loadingController: LoadingController,
-              private auth : AuthGuard) {
+              private auth : AuthGuard,
+              private global : GlobalService) {
 
     this.api = restapi;
     this.router = rt;
@@ -81,7 +83,13 @@ export class LoginPage implements OnInit {
     await this.api.getUser(userInput)
       .subscribe(res => {
         this.checkPassword(userInput['password'], res[0]['password'])
-        loading.dismiss();
+        loading.dismiss(); 
+
+        // Here we are sure that the person is logged in
+        //this.global.username = this.api.getUser(userInput);
+        console.log("coucou");
+        console.log(this.api.getUser(userInput));
+
       }, err => {
         console.log(err);
         loading.dismiss();
