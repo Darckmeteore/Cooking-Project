@@ -10,13 +10,13 @@ ingredients : list of ids
 
 realisation : string
 
-processing : String
+steps : list of Strings
 
-level_needed : int
+level : int
 
 exp : int
 
-picture : string
+picture : this is like meals/id.png
 
 ## Format d'un ingredient
 
@@ -28,4 +28,4 @@ benefits : string
 
 things_to_know : string
 
-picture : string
+picture : this is like ingredient/id.png
