@@ -13,3 +13,15 @@ realisation : string
 processing : String
 
 picture : string
+
+## Format d'un ingredient
+
+id : int
+
+name : string
+
+benefits : string
+
+things_to_know : string
+
+picture : string
