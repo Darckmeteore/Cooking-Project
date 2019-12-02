@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { RestService } from '../app-rest-service.service';
 import * as bcrypt from 'bcryptjs';
 import { AuthGuard } from '../guards/auth.guard';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginPage implements OnInit {
   api   : RestService;
   router : Router;
   login : {};
+  validation_messages : {};
+  loginForm : FormGroup;
 
 
   /**
@@ -30,15 +33,40 @@ export class LoginPage implements OnInit {
               private restapi: RestService,
               private loadingController: LoadingController,
               private auth : AuthGuard,
-              private global : GlobalService) {
+              private global : GlobalService,
+              private formBuilder : FormBuilder) {
 
     this.api = restapi;
     this.router = rt;
 
+    /**
+     * Login data
+     */
     this.login = {
       email : "",
       password : ""
     }
+
+    /**
+     * Login form
+     */
+    this.loginForm = formBuilder.group({
+      email : ['', Validators.compose([Validators.required, Validators.email])],
+      password : ['', Validators.required]
+    });
+
+    /**
+     * Login error messages
+     */
+    this.validation_messages = {
+      'email': [
+          { type: 'required', message: 'Email is required' },
+          { type: 'email', message: 'Please enter a valid email' },
+        ],
+        'password': [
+          { type: 'required', message: 'Password is required.' }
+        ]
+      }
 
    }
 
