@@ -6,6 +6,10 @@
 
 <ion-content class="ion-padding">
 
+    <div class="error-message login-failed" *ngIf="loginFailed">
+      Can't connect : Wrong email or password
+    </div>
+
   <div>
     <h2>Login</h2>
   </div>
