@@ -20,6 +20,7 @@ export class LoginPage implements OnInit {
   api   : RestService;
   router : Router;
   login : {};
+  loginFailed : boolean;
   validation_messages : {};
   loginForm : FormGroup;
 
@@ -38,6 +39,7 @@ export class LoginPage implements OnInit {
 
     this.api = restapi;
     this.router = rt;
+    this.loginFailed = false;
 
     /**
      * Login data
@@ -75,6 +77,7 @@ export class LoginPage implements OnInit {
    * On page init
    */
   ngOnInit() {
+    this.loginFailed = false;
   }
 
 
@@ -87,10 +90,12 @@ export class LoginPage implements OnInit {
   
     let match = await bcrypt.compare(password, hashed);
     if(match) {
+      this.loginFailed = false;
       this.auth.loggedIn = true;
       this.router.navigateByUrl('/home');
     }
     else {
+      this.loginFailed = true;
       console.log("Can't connect : Wrong email or password");
     }
 
@@ -105,27 +110,36 @@ export class LoginPage implements OnInit {
     if(this.loginForm.valid) {
 
       let userInput = this.login;
+      let user;
 
       const loading = await this.loadingController.create({
         message: 'Loading'
       });
-
       await loading.present();
-      await this.api.getUser(userInput)
+
+      // CHECK USER DATA
+      this.api.getUser(userInput)
         .subscribe(res => {
-          this.checkPassword(userInput['password'], res[0]['password'])
-          loading.dismiss(); 
-
-          // Here we are sure that the person is logged in
-          this.global.user = res[0];
-
-        }, err => {
-          console.log(err);
+          // user doesn't exist in database : wrong email
+          if( typeof res[0] === 'undefined' ) {
+            this.loginFailed = true;
+            console.log("Can't connect : Wrong email or password");
+          }
+          else {
+            this.checkPassword(userInput['password'], res[0]['password']);
+            this.global.user = res[0];  // we are sure that the person is logged in
+          }
+          
           loading.dismiss();
-        });
+          
+      }, err => {
+        console.log(err);
+        loading.dismiss();
+      });
 
     }
     else {
+      this.loginFailed = true;
       console.log("Invalid form")
     }
   }
