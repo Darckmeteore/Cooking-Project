@@ -137,28 +137,6 @@ function createMeal(req, res) {
             info: 'Success'
         });
     });
-
-    /*
-
-    const newMeal = Models.Meal({
-        mealid: req.body.mealId,
-        name: req.body.name,
-        ingredients: req.body.ingredients,
-        realisation: req.body.realisation,
-        steps: req.body.steps,
-        exp: req.body.exp,
-        level: req.body.level
-
-    });
-
-    newMeal.save(function(err) {
-        if (err) throw err;
-        res.json({
-            info: 'Success'
-        });
-    });
-
-     */
 }
 
 
