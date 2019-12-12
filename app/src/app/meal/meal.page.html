@@ -29,29 +29,13 @@
 
                 <ion-text *ngFor="let ingredient of meal.ingredients">
 
-                    <span style="margin-left: 15px;">• {{ingredient}}</span>
+
+
+                    <span *ngIf="ingredient" style="margin-left: 15px;">• {{ingredient.quantity}} {{ingredient.ingredient.name}}</span>
                     <br>
 
-                </ion-text>
 
-                <ion-text>
-                    <span style="margin-left: 15px;">• 1 Banane</span>
-                    <br>
-                </ion-text>
 
-                <ion-text>
-                    <span style="margin-left: 15px;">• 2 Pommes</span>
-                    <br>
-                </ion-text>
-
-                <ion-text>
-                    <span style="margin-left: 15px;">• 5 Oeufs</span>
-                    <br>
-                </ion-text>
-
-                <ion-text>
-                    <span style="margin-left: 15px;">• 200ml de Lait</span>
-                    <br>
                 </ion-text>
 
                 <br>

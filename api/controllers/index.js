@@ -7,13 +7,17 @@ function creatlogindata(req, res) {
     });
     newLoginData.save(function(err) {
         if (err) throw err;
-        res.json({ info: 'Success' });
+        res.json({
+            info: 'Success'
+        });
     });
 }
 
 function getUser(req, res) {
     const Models = require('../models');
-    Models.LoginData.find({ email: req.params.email }, function(err, logindatas) {
+    Models.LoginData.find({
+        email: req.params.email
+    }, function(err, logindatas) {
         if (err) throw err;
         res.json(logindatas);
     });
@@ -23,19 +27,66 @@ function getUser(req, res) {
 function getAllMeals(req, res) {
     const Models = require('../models');
 
-    Models.Meal.find({}).sort({ level: 1 }).exec(function(err, meals) {
+    Models.Meal.find({}).sort({
+        level: 1
+    }).exec(function(err, meals) {
         if (err) throw err;
         res.json(meals);
     });
 }
 
-function getMeal(req, res) {
+function getMealWithIngredients(req, res) {
     const Models = require('../models');
-    Models.Meal.find({ _id: req.params.id }, function(err, meal) {
+
+    Models.Meal.
+    find({ _id: req.params.id }).
+    populate('ingredients.ingredient').
+    exec(function(err, meal) {
         if (err) throw err;
         res.json(meal);
     });
+
 }
+
+function getMeal(req, res) {
+    const Models = require('../models');
+
+    Models.Meal.find({
+        _id: req.params.id
+    }, function(err, meal) {
+        if (err) throw err;
+        res.json(meal);
+    });
+
+
+}
+
+
+function createDummy(req, res) {
+    const Models = require('../models');
+
+    var ObjectID = require('mongodb').ObjectID;
+
+    let theIngredients = [{quantity:1, ingredient:ObjectID("5de522e14a4a1c02a00b3d16")}, {quantity:2, ingredient:ObjectID("5de523004a4a1c02a00b3d17")}];
+
+    const newMeal = Models.Meal({
+        mealid: req.body.mealId,
+        name: req.body.name,
+        ingredients: theIngredients,
+        realisation: req.body.realisation,
+        steps: req.body.steps,
+        exp: req.body.exp,
+        level: req.body.level
+    });
+
+    newMeal.save(function(err) {
+        if (err) throw err;
+        res.json({
+            info: 'Success'
+        });
+    });
+}
+
 
 function createMeal(req, res) {
     const Models = require('../models');
@@ -53,7 +104,9 @@ function createMeal(req, res) {
 
     newMeal.save(function(err) {
         if (err) throw err;
-        res.json({ info: 'Success' });
+        res.json({
+            info: 'Success'
+        });
     });
 }
 
@@ -69,34 +122,40 @@ function getAllIngredients(req, res) {
 
 function getIngredient(req, res) {
     const Models = require('../models');
+
     Models.Ingredient.find({ _id: req.params.id }, function(err, ingredient) {
         if (err) throw err;
         res.json(ingredient);
     });
+
+
 }
 
 function createIngredient(req, res) {
     const Models = require('../models');
 
     const newIngredient = Models.Ingredient({
-        ingredientId: req.body.ingredientId,
         name: req.body.name,
         benefits: req.body.benefits,
         things_to_know: req.body.things_to_know
-
     });
 
     newIngredient.save(function(err) {
         if (err) throw err;
-        res.json({ info: 'Success' });
+        res.json({
+            info: 'Success'
+        });
     });
 }
 
 module.exports.getUser = getUser;
 module.exports.creatlogindata = creatlogindata;
 module.exports.getMeal = getMeal;
+module.exports.getMealWithIngredient = getMealWithIngredients;
 module.exports.createMeal = createMeal;
 module.exports.getAllMeals = getAllMeals;
 module.exports.getIngredient = getIngredient;
 module.exports.createIngredient = createIngredient;
 module.exports.getAllIngredients = getAllIngredients;
+
+module.exports.createDummy = createDummy;

@@ -20,14 +20,14 @@ const LoginDataSchema = new Schema({
     },
     leveluser: {
         type: Number,
-        default : 0
+        default: 0
     },
     leveluser: {
         type: Object,
-        default : {}
+        default: {}
     }
-    
-    
+
+
 });
 
 
@@ -38,7 +38,7 @@ const user = new Schema(
 
 const MealSchema = new Schema({
     name: String,
-    ingredients: Object,
+    ingredients: [{ quantity: Number, ingredient: { type: Schema.Types.ObjectId, ref: 'Ingredient' } }],
     realisation: String,
     steps: Object,
     level: {

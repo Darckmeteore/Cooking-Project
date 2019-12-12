@@ -85,6 +85,13 @@ export class RestService {
       catchError(this.handleError));
   }
 
+  getMealWithIngredients(id:any): Observable<any> {
+    let url = this.apiUrl + "mealwithingredient/" + id;
+    return this.http.get(url, httpOptions).pipe(
+        map(this.extractData),
+        catchError(this.handleError));
+  }
+
   /**
    * 
    */

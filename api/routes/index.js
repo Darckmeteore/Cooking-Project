@@ -17,6 +17,10 @@ router.get('/api/meal/:id', (req, res) => {
     controller.getMeal(req, res);
 });
 
+router.get('/api/mealwithingredient/:id', (req, res) => {
+    controller.getMealWithIngredient(req, res);
+});
+
 router.post('/api/meal', (req, res) => {
     controller.createMeal(req, res);
 });
@@ -31,6 +35,10 @@ router.get('/api/ingredient/:id', (req, res) => {
 
 router.post('/api/ingredient', (req, res) => {
     controller.createIngredient(req, res);
+});
+
+router.get('/api/createdummy', (req, res) => {
+    controller.createDummy(req, res);
 });
 
 
