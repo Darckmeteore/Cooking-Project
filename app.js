@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require('path');
 const app = express();
 const APIRoutes = require('./api/routes/');
 
@@ -12,7 +12,14 @@ app.use(bodyParser.urlencoded ( {
 }));
 
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, 'public/')));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'api/views/'));
+app.set('view engine', 'ejs');
 
 // //
 
@@ -31,3 +38,5 @@ mongoose.connect(database,(err)=> {
 		throw err;
 	console.log('Connect to the database');
 });
+
+module.exports = app;

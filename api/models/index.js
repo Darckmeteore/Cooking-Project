@@ -26,21 +26,13 @@ const LoginDataSchema = new Schema({
         type: Object,
         default: {}
     }
-
-
 });
-
-
-// USER SCHEMA
-const user = new Schema(
-
-)
 
 const MealSchema = new Schema({
     name: String,
-    ingredients: [{ quantity: Number, ingredient: { type: Schema.Types.ObjectId, ref: 'Ingredient' } }],
+    ingredients: [{quantity: String, ingredient: {type: Schema.Types.ObjectId, ref: 'Ingredient'}}],
     realisation: String,
-    steps: Object,
+    steps: [{step: Number, instruction: String}],
     level: {
         type: Number,
         default: 0
@@ -48,10 +40,6 @@ const MealSchema = new Schema({
     exp: {
         type: Number,
         default: 0
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
     }
 });
 

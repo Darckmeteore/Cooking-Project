@@ -1,0 +1,77 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<form action="/api/meal" method="post">
+    Name: <input type="text" name="name"><br>
+    Realisation: <input type="text" name="realisation"><br>
+    level: <input type="text" name="level"><br>
+    exp: <input type="text" name="exp"><br>
+
+    <br>
+
+    Ingredients<br>
+    <div class="ingredientscontainer">
+        <button class="add_form_ingredients">Add New Field</button>
+    </div>
+
+    <br>
+
+    steps<br>
+    <div class="stepscontainer">
+        <button class="add_form_steps">Add New Field</button>
+    </div>
+
+    <br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<script>
+
+    $.getJSON('/api/ingredients', function(data) {
+        $(document).ready(function() {
+
+            console.log(data);
+
+            var ingredientscontainer = $(".ingredientscontainer");
+            var add_form_ingredients = $(".add_form_ingredients");
+
+            var options = "";
+
+            data.forEach(function (d) {
+                options += "<option value=" + d._id + ">" + d.name + "</option>";
+            })
+
+            $(add_form_ingredients).click(function(e) {
+                e.preventDefault();
+                $(ingredientscontainer).append('<div><input type="text" name="quantities[]"/><select name="ingredients[]"> ' + options + ' </select><a href="#" class="delete">Delete</a></div>'); //add input box
+            });
+
+            $(ingredientscontainer).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+            })
+
+
+            var stepscontainer = $(".stepscontainer");
+            var add_form_steps = $(".add_form_steps");
+
+            var stepNumber = 1;
+
+            $(add_form_steps).click(function(e) {
+                e.preventDefault();
+                $(stepscontainer).append('<div>Etape ' + stepNumber + '<input type="text" name="steps[]"/><a href="#" class="delete">Delete</a></div>'); //add input box
+
+                stepNumber += 1;
+            });
+
+            $(stepscontainer).on("click", ".delete", function(e) {
+                e.preventDefault();
+                $(this).parent('div').remove();
+            })
+
+        });
+    });
+
+
+
+</script>

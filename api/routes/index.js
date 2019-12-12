@@ -41,5 +41,17 @@ router.get('/api/createdummy', (req, res) => {
     controller.createDummy(req, res);
 });
 
+// Pages
+
+// Page to create an Ingredient
+router.get('/page/createingredient', (req, res) => {
+    controller.goToCreateIngredient(req, res);
+});
+
+// Page to create a meal
+router.get('/page/createmeal', (req, res) => {
+    controller.goToCreateMeal(req, res);
+});
+
 
 module.exports = router;
