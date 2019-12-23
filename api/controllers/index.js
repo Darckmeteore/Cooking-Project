@@ -105,6 +105,16 @@ function createDummy(req, res) {
 function createMeal(req, res) {
     const Models = require('../models');
 
+    /*
+
+    const formidable = require('formidable');
+    const path = require('path');
+    const mv = require('mv');
+    const form = new formidable.IncomingForm();
+
+     */
+
+
     var ObjectID = require('mongodb').ObjectID;
 
     // let theIngredients = [{quantity:1, ingredient:ObjectID("5de522e14a4a1c02a00b3d16")}, {quantity:2, ingredient:ObjectID("5de523004a4a1c02a00b3d17")}];
@@ -131,11 +141,24 @@ function createMeal(req, res) {
     });
 
 
-    newMeal.save(function (err) {
+    newMeal.save(function (err, meal) {
         if (err) throw err;
         res.json({
             info: 'Success'
         });
+
+        /*
+
+        form.parse(req, function (err, fields, files) {
+            let oldpath = files.filetoupload.path;
+            let newpath = path.join(__dirname, '../../uploads/meals/') + meal.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+            mv(oldpath, newpath, function (err) {
+                if (err) throw err;
+            });
+        });
+
+         */
+
     });
 }
 
@@ -163,19 +186,40 @@ function getIngredient(req, res) {
 function createIngredient(req, res) {
     const Models = require('../models');
 
+    /*
+
+    const formidable = require('formidable');
+    const path = require('path');
+    const mv = require('mv');
+    const form = new formidable.IncomingForm();
+
+     */
+
     const newIngredient = Models.Ingredient({
         name: req.body.name,
         benefits: req.body.benefits,
         things_to_know: req.body.things_to_know
     });
 
-    newIngredient.save(function (err) {
+    newIngredient.save(function (err, ingredient) {
         if (err) throw err;
         res.json({
             info: 'Success'
         });
-    });
 
+        /*
+
+        form.parse(req, function (err, fields, files) {
+            let oldpath = files.filetoupload.path;
+            let newpath = path.join(__dirname, '../../uploads/ingredients/') + ingredient.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+            mv(oldpath, newpath, function (err) {
+                if (err) throw err;
+            });
+        });
+
+         */
+
+    });
 }
 
 module.exports.getUser = getUser;

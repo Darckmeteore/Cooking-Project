@@ -3,6 +3,8 @@ const path = require('path');
 const app = express();
 const APIRoutes = require('./api/routes/');
 
+// TODO Attention pour l'upload des images lors de la création des repas ou des ingredients il vaut mieux que soit mettre une url qui existe déjà soit le faire dans un second temps car sinon la donnée du form est corompue...
+
 //Le parser est nécessaire (cela fait partie des aberrations) car par défaut le serveur Node n'accepte pas les données du client, il faut donc un middleware (body-parser) pour ça.
 //On l'oublie => que des None pour les valeurs
 //Pour les données de formulaire, IL FAUT LE METTRE AVANT LE APP.USE
