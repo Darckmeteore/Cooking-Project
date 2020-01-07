@@ -9,7 +9,7 @@
   
   <!-- Checkboxes in a List -->
  
-<form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+<form (ngSubmit)="logForm(form)">
   <ion-list>
     
   </ion-list>
@@ -18,28 +18,32 @@
 
     <ion-item>
       <ion-label>Description : </ion-label>
-      <ion-input type="text" [(ngModel)]="todo.descr" name="descr"></ion-input>
+      <ion-input type="text" [(ngModel)]="review.description" name="description"></ion-input>
     </ion-item>
     <br><br>
     <ion-item>
       <ion-label>Je recommande le plat </ion-label>
-      <ion-checkbox [(ngModel)]="recommande"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="review.recommande" name="recommande"></ion-checkbox>
     </ion-item>
   
     <ion-item>
       <ion-label>Un plat diététique </ion-label>
-      <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="review.diet" name="diet"></ion-checkbox>
     </ion-item>
   
     <ion-item>
       <ion-label>Un plat difficile à mettre en place</ion-label>
-      <ion-checkbox [(ngModel)]="mushrooms"></ion-checkbox>
+      <ion-checkbox [(ngModel)]="review.hard" name="hard"></ion-checkbox>
     </ion-item>
   
   </ion-list>
+
   <br><br>
-  <ion-button (click)="senddata()" name = "clase">Envoyer :D </ion-button>
+
+  <ion-button type="ngSubmit" >Envoyer :D </ion-button>
+
 </form>
+
 <br><br>
-<ion-button (click)="close()" name = "clase">Fermer</ion-button>
+<ion-button (click)="close()" name = "close">Fermer</ion-button>
 </ion-content>

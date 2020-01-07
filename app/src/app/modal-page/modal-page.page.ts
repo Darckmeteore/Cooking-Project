@@ -10,6 +10,19 @@ export class ModalPagePage implements OnInit {
   // Data passed in by componentProps
   
   constructor(private modalController: ModalController) { }
+  
+  public review = {
+    description: '',
+    recommande:false,
+    diet:false,
+    hard:false
+
+  };
+  logForm() {
+    console.log(this.review)
+  }
+  
+  
   async close(){
     await this.modalController.dismiss();
   }
