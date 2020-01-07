@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
-import { GlobalService } from './../global.service';
+import { GlobalService } from '../global.service';
 import { Component } from '@angular/core';
 
 import { LoadingController, NavController, Platform, MenuController } from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
+import { global } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class MealsPage {
   constructor(private router : Router, private global : GlobalService, private menu : MenuController, public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
     this.api = restapi;
     this.devWidth = this.plateform.width();
+
+    console.log(global.user);
   }
 
   openMenu() {

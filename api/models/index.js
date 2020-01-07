@@ -18,13 +18,13 @@ const LoginDataSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    leveluser: {
+    level: {
+        type: Number,
+        default: 1
+    },
+    exp: {
         type: Number,
         default: 0
-    },
-    leveluser: {
-        type: Object,
-        default: {}
     }
 });
 

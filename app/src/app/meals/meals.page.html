@@ -89,7 +89,7 @@
                 </ion-toolbar>
 
                 <ion-toolbar>
-                    <ion-title slot="end">[Niveaux]</ion-title>
+                    <ion-title slot="end">{{ global.user.level }}</ion-title>
                 </ion-toolbar>
             </ion-header>
 
@@ -98,7 +98,7 @@
 
 
                 <ion-list *ngFor="let meal of meals">
-                    <ion-card *ngIf="meal.level <= 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
+                    <ion-card *ngIf="meal.level <= global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
                         <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
                         <ion-card-header>
                             <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
@@ -106,7 +106,7 @@
                         </ion-card-header>
                     </ion-card>
 
-                    <ion-card *ngIf="meal.level > 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
+                    <ion-card *ngIf="meal.level > global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
                         <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
                         <ion-card-header>
                             <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
