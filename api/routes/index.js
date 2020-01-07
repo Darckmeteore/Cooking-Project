@@ -53,5 +53,25 @@ router.get('/page/createmeal', (req, res) => {
     controller.goToCreateMeal(req, res);
 });
 
+// Page to create an Ingredient
+router.get('/page/addimagetoingredient', (req, res) => {
+    controller.goToAddImageToIngredient(req, res);
+});
+
+// Page to create a meal
+router.get('/page/addimagetomeal', (req, res) => {
+    controller.goToAddImageToMeal(req, res);
+});
+
+// Page to create an Ingredient
+router.post('/page/addimagetoingredient', (req, res) => {
+    controller.addImageToIngredient(req, res);
+});
+
+// Page to create a meal
+router.post('/page/addimagetomeal', (req, res) => {
+    controller.addImageToMeal(req, res);
+});
+
 
 module.exports = router;

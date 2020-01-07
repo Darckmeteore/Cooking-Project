@@ -1,0 +1,32 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<form action="/page/addimagetomeal" method="post" enctype="multipart/form-data">
+    Ingredients<br>
+
+    <div class="mealcontainer"></div>
+
+    <input type="file" name="filetoupload"><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+
+<script>
+
+    $.getJSON('/api/meals', function(data) {
+        $(document).ready(function() {
+
+            var mealcontainer = $(".mealcontainer");
+
+            var options = "";
+
+            data.forEach(function (d) {
+                options += "<option value=" + d._id + ">" + d.name + "</option>";
+            })
+
+            $(mealcontainer).append('<select name="mealid"> ' + options + ' </select>');
+
+        });
+    });
+
+</script>

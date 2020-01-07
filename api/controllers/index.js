@@ -105,16 +105,6 @@ function createDummy(req, res) {
 function createMeal(req, res) {
     const Models = require('../models');
 
-    /*
-
-    const formidable = require('formidable');
-    const path = require('path');
-    const mv = require('mv');
-    const form = new formidable.IncomingForm();
-
-     */
-
-
     var ObjectID = require('mongodb').ObjectID;
 
     // let theIngredients = [{quantity:1, ingredient:ObjectID("5de522e14a4a1c02a00b3d16")}, {quantity:2, ingredient:ObjectID("5de523004a4a1c02a00b3d17")}];
@@ -147,18 +137,6 @@ function createMeal(req, res) {
             info: 'Success'
         });
 
-        /*
-
-        form.parse(req, function (err, fields, files) {
-            let oldpath = files.filetoupload.path;
-            let newpath = path.join(__dirname, '../../uploads/meals/') + meal.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
-            mv(oldpath, newpath, function (err) {
-                if (err) throw err;
-            });
-        });
-
-         */
-
     });
 }
 
@@ -186,15 +164,6 @@ function getIngredient(req, res) {
 function createIngredient(req, res) {
     const Models = require('../models');
 
-    /*
-
-    const formidable = require('formidable');
-    const path = require('path');
-    const mv = require('mv');
-    const form = new formidable.IncomingForm();
-
-     */
-
     const newIngredient = Models.Ingredient({
         name: req.body.name,
         benefits: req.body.benefits,
@@ -206,20 +175,66 @@ function createIngredient(req, res) {
         res.json({
             info: 'Success'
         });
+    });
+}
 
-        /*
+function goToAddImageToMeal(req, res) {
+    const Models = require('../models');
 
-        form.parse(req, function (err, fields, files) {
-            let oldpath = files.filetoupload.path;
-            let newpath = path.join(__dirname, '../../uploads/ingredients/') + ingredient.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
-            mv(oldpath, newpath, function (err) {
-                if (err) throw err;
+    Models.Meal.find({}).exec(function (err, meals) {
+        if (err) throw err;
+        res.render('addimagetomeal.ejs', {meals: meals});
+    });
+}
+
+function goToAddImageToIngredient(req, res) {
+    const Models = require('../models');
+
+    Models.Ingredient.find({}).exec(function (err, ingredients) {
+        if (err) throw err;
+        res.render('addimagetoingredient.ejs', {ingredients: ingredients});
+    });
+}
+
+function addImageToMeal(req, res) {
+    const formidable = require('formidable');
+    const path = require('path');
+    const mv = require('mv');
+    const form = new formidable.IncomingForm();
+
+    console.log(req.body);
+
+    form.parse(req, function (err, fields, files) {
+        let oldpath = files.filetoupload.path;
+        let newpath = path.join(__dirname, '../../public/uploads/meals/') + req.body.mealid + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+        mv(oldpath, newpath, function (err) {
+            if (err) throw err;
+
+            res.json({
+                info: 'Success'
             });
         });
-
-         */
-
     });
+}
+
+function addImageToIngredient(req, res) {
+
+    const formidable = require('formidable');
+    const path = require('path');
+    const mv = require('mv');
+    const form = new formidable.IncomingForm();
+
+     form.parse(req, function (err, fields, files) {
+           let oldpath = files.filetoupload.path;
+           let newpath = path.join(__dirname, '../../public/uploads/ingredients/') + req.body.ingredientid + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+           mv(oldpath, newpath, function (err) {
+               if (err) throw err;
+
+               res.json({
+                   info: 'Success'
+               });
+           });
+     });
 }
 
 module.exports.getUser = getUser;
@@ -234,5 +249,9 @@ module.exports.getAllIngredients = getAllIngredients;
 
 module.exports.goToCreateIngredient = goToCreateIngredient;
 module.exports.goToCreateMeal = goToCreateMeal;
+module.exports.goToAddImageToMeal = goToAddImageToMeal;
+module.exports.goToAddImageToIngredient = goToAddImageToIngredient;
+module.exports.addImageToMeal = addImageToMeal;
+module.exports.addImageToIngredient = addImageToIngredient;
 
 module.exports.createDummy = createDummy;
