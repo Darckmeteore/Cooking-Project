@@ -15,7 +15,7 @@
   </div>
   
   <form [formGroup]="loginForm" (ngSubmit)="tryLogin()">
-
+    
     <ion-item>
       <ion-input formControlName="email" [(ngModel)]="login.email" name="email" type="text" placeholder="email" required></ion-input>
       <div class="validation-errors">
@@ -39,13 +39,8 @@
       </div>
     </ion-item>
     
-
     <div padding>
       <ion-button type="submit" expand="block" color="primary">Login</ion-button>
     </div>
-
   </form>
-
-  
-
 </ion-content>
