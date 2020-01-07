@@ -56,19 +56,19 @@
             </ion-header>
             <ion-content>
                 <ion-list>
-                    <ion-item>
+                    <ion-item (click)="toHome()">
                         <ion-icon name="home" slot="start"></ion-icon>
                         <ion-label>Home</ion-label>
                     </ion-item>
-                    <ion-item>
+                    <ion-item (click)="toProfile()">
                         <ion-icon name="person" slot="start"></ion-icon>
                         <ion-label>Profile</ion-label>
                     </ion-item>
-                    <ion-item>
+                    <ion-item (click)="toMessages()">
                         <ion-icon name="chatbubbles" slot="start"></ion-icon>
                         <ion-label>Messages</ion-label>
                     </ion-item>
-                    <ion-item>
+                    <ion-item (click)="toSettings()"> 
                         <ion-icon name="settings" slot="start"></ion-icon>
                         <ion-label>Settings</ion-label>
                     </ion-item>
