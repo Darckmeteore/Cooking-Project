@@ -84,22 +84,25 @@ constructor(private http : HttpClient,
 
     if(this.signupForm.valid) {
 
-      this.http.get('http://localhost:3000/api/LoginData/' + this.LoginData.createEmail)
+      let userInput = this.signup;
+    
+      this.http.get('http://localhost:3000/api/signup/' + userInput['email'])
       .subscribe( (data : any[]) => {
         console.log(data);
 
         // CHECK EXISTING USER
         if (data.length == 0) {
           console.log("data = nul we can create a user");
-          this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
-          this.http.post('http://localhost:3000/api/LoginData',{pseudo: this.LoginData.createPseudo, email: this.LoginData.createEmail , password: this.LoginData.createPassword})
+          userInput['password'] = bcrypt.hashSync(userInput['password']);
+          this.http.post('http://localhost:3000/api/signup',{pseudo: userInput['pseudo'], email: userInput['email'] , password: userInput['password']})
           .subscribe(data => {
             console.log(data['_body']);
             }, error => {
+            this.signupFailed = true;
             console.log(error);
           });
           console.log('push in db');
-          console.log(this.LoginData);
+          console.log(this.signup);
           this.router.navigateByUrl('/home');
         }
         else {
@@ -107,6 +110,7 @@ constructor(private http : HttpClient,
         console.log('Try again');
         }
       }, error => {
+        this.signupFailed = true;
         console.log(error);
       });
     }
@@ -114,8 +118,6 @@ constructor(private http : HttpClient,
       this.signupFailed = true;
       console.log("Invalid signup form");
     }
-    
   }
-
 
 }
