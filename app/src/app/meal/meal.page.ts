@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { LoadingController, Platform } from '@ionic/angular';
+import { LoadingController, Platform , ModalController} from '@ionic/angular';
 import { RestService } from '../app-rest-service.service';
+import { ModalPagePage } from '../modal-page/modal-page.page';
 
 @Component({
   selector: 'app-meal',
@@ -15,8 +16,15 @@ export class MealPage implements OnInit {
   id: string;
   devWidth: any;
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
+  constructor(private modal : ModalController , public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
     this.api = restapi;
+  }
+
+  async openModal(){
+    const myModal =await this.modal.create({
+      component : ModalPagePage
+    });
+    await myModal.present();
   }
 
   async getMeal(id: any) {

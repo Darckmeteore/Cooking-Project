@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ModalPage</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <!-- Checkboxes in a List -->
+ 
+<form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+  <ion-list>
+    
+  </ion-list>
+  
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Description : </ion-label>
+      <ion-input type="text" [(ngModel)]="todo.descr" name="descr"></ion-input>
+    </ion-item>
+    <br><br>
+    <ion-item>
+      <ion-label>Je recommande le plat </ion-label>
+      <ion-checkbox [(ngModel)]="recommande"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Un plat diététique </ion-label>
+      <ion-checkbox [(ngModel)]="sausage"></ion-checkbox>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Un plat difficile à mettre en place</ion-label>
+      <ion-checkbox [(ngModel)]="mushrooms"></ion-checkbox>
+    </ion-item>
+  
+  </ion-list>
+  <br><br>
+  <ion-button (click)="senddata()" name = "clase">Envoyer :D </ion-button>
+</form>
+<br><br>
+<ion-button (click)="close()" name = "clase">Fermer</ion-button>
+</ion-content>

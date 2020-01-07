@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'meal/:id', loadChildren: './meal/meal.module#MealPageModule', canActivate: [AuthGuard] },
   { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule', canActivate: [AuthGuard] },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoginGuard] },  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
+  { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' },
 
 
 ];
