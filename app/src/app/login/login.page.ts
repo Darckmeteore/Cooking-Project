@@ -107,6 +107,9 @@ export class LoginPage implements OnInit {
 
   }
 
+  goToSignup() {
+    this.router.navigate(['signup']);
+  }
 
    /**
    * Attempt login
