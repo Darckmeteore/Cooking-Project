@@ -22,8 +22,6 @@ export class MealsPage {
   constructor(private router : Router, private global : GlobalService, private menu : MenuController, public restapi: RestService, public loadingController: LoadingController, public navController : NavController, public plateform: Platform) {
     this.api = restapi;
     this.devWidth = this.plateform.width();
-
-    console.log(global.user);
   }
 
   openMenu() {
