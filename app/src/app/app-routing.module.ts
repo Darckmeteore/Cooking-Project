@@ -11,6 +11,9 @@ const routes: Routes = [
   { path: 'meal/:id', loadChildren: './meal/meal.module#MealPageModule', canActivate: [AuthGuard] },
   { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule', canActivate: [AuthGuard] },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoginGuard] },  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
+  { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
+  { path: 'messages', loadChildren: './messages/messages.module#MessagesPageModule' },
+  { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
 
 
 ];
