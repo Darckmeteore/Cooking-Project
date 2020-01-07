@@ -2,51 +2,120 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as bcrypt from 'bcryptjs';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+
 @Component({ 
   selector: 'app-signup',
   templateUrl: './signup.page.html',
   styleUrls: ['./signup.page.scss'],
 })
+
+
 export class SignupPage implements OnInit {
+
   router : Router;
-  public LoginData = {
-      createPseudo : "",
-      createEmail : "",
-      createPassword : ""
-    };
-    public JCP = "mrtlagrossesalopedu74";
-    constructor(
-      private http : HttpClient,
-      private rt : Router
-    ) { this.router = rt;}
+  signup : {};
+  signupFailed : boolean;
+  signupForm : FormGroup;
+  validation_messages : {};
 
-    ngOnInit() {
+  public JCP = "mrtlagrossesalopedu74";
+
+
+/**
+ * CONSTRUCTOR
+ * @param http 
+ * @param rt 
+ */
+constructor(private http : HttpClient,
+            private rt : Router,
+            private formBuilder : FormBuilder) { 
+
+  this.router = rt;
+
+  /**
+   * Signup data
+   */
+  this.signup = {
+    pseudo   : "",
+    email    : "",
+    password : "" 
+  }
+
+  /**
+   * Signup form group
+   */
+  this.signupForm = formBuilder.group({
+    pseudo : ['', Validators.required],
+    email : ['', Validators.compose([Validators.required, Validators.email])],
+    password : ['', Validators.required]
+  });
+
+  /**
+   * signup error messages
+   */
+  this.validation_messages = {
+    'pseudo' : [
+      { type: 'required', message: 'Pseudo is required' },
+    ],
+    'email': [
+        { type: 'required', message: 'Email is required' },
+        { type: 'email', message: 'Please enter a valid email' },
+      ],
+      'password': [
+        { type: 'required', message: 'Password is required.' }
+      ]
     }
+  }
 
-    btnclick(){
-      this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
+  
+  /**
+   * On page init
+   */
+  ngOnInit() {
+    this.signupFailed = false;
+  }
+
+
+  /**
+   * Attempt signup
+   */
+  async trySignup() {
+
+    if(this.signupForm.valid) {
+
       this.http.get('http://localhost:3000/api/LoginData/' + this.LoginData.createEmail)
       .subscribe( (data : any[]) => {
         console.log(data);
-         if (data.length == 0){
-           console.log("data = nul we can create a user");
-           this.http.post('http://localhost:3000/api/LoginData',{pseudo: this.LoginData.createPseudo, email: this.LoginData.createEmail , password: this.LoginData.createPassword})
-           .subscribe(data => {
-              console.log(data['_body']);
-             }, error => {
-              console.log(error);
-            });
-           console.log('push in db');
-           console.log(this.LoginData);
-           this.router.navigateByUrl('/home');
-         }else{
-          this.router.navigateByUrl('/signup');
-          console.log('Try again');
-         }
-        }, error => {
-         console.log(error);
-       });
-     }
+
+        // CHECK EXISTING USER
+        if (data.length == 0) {
+          console.log("data = nul we can create a user");
+          this.LoginData.createPassword = bcrypt.hashSync(this.LoginData.createPassword);
+          this.http.post('http://localhost:3000/api/LoginData',{pseudo: this.LoginData.createPseudo, email: this.LoginData.createEmail , password: this.LoginData.createPassword})
+          .subscribe(data => {
+            console.log(data['_body']);
+            }, error => {
+            console.log(error);
+          });
+          console.log('push in db');
+          console.log(this.LoginData);
+          this.router.navigateByUrl('/home');
+        }
+        else {
+        this.router.navigateByUrl('/signup');
+        console.log('Try again');
+        }
+      }, error => {
+        console.log(error);
+      });
+    }
+    else {
+      this.signupFailed = true;
+      console.log("Invalid signup form");
+    }
+    
+  }
 
 
 }
