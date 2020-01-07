@@ -26,8 +26,14 @@ export class LoginPage implements OnInit {
 
 
   /**
-   * 
-   * @param http 
+   * CONSTRUCTOR
+   * @param http
+   * @param rt 
+   * @param restapi 
+   * @param loadingController 
+   * @param auth 
+   * @param global 
+   * @param formBuilder 
    */
   constructor(private http : HttpClient,
               private rt: Router,
@@ -45,7 +51,7 @@ export class LoginPage implements OnInit {
      * Login data
      */
     this.login = {
-      email : "",
+      email    : "",
       password : ""
     }
 
@@ -140,11 +146,8 @@ export class LoginPage implements OnInit {
     }
     else {
       this.loginFailed = true;
-      console.log("Invalid form")
+      console.log("Invalid login form");
     }
   }
 
-    goToSignup() {
-      this.router.navigate(['signup']);
-    }
 }
