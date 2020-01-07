@@ -49,8 +49,18 @@ const IngredientSchema = new Schema({
     things_to_know: String
 });
 
+
+const ReviewSchema = new Schema({
+    description: String,
+    recommande:Boolean,
+    diet:Boolean,
+    hard:Boolean
+    
+});
+
 module.exports = {
     LoginData: mongoose.model('LoginData', LoginDataSchema),
     Meal: mongoose.model('Meal', MealSchema),
-    Ingredient: mongoose.model('Ingredient', IngredientSchema)
+    Ingredient: mongoose.model('Ingredient', IngredientSchema),
+    Review: mongoose.model('Review',ReviewSchema)
 };
