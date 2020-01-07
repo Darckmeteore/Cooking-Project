@@ -107,7 +107,4 @@ export class MealsPage {
   toSettings() {
     this.router.navigate(['settings']);
   }
- 
-
-
 }

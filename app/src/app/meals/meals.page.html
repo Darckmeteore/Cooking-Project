@@ -99,7 +99,7 @@
 
                 <ion-list *ngFor="let meal of meals">
                     <ion-card *ngIf="meal.level <= global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
-                        <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
+                        <img src="http://localhost:3000/uploads/meals/{{meal._id}}.jpg" />
                         <ion-card-header>
                             <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
                             <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
@@ -107,7 +107,7 @@
                     </ion-card>
 
                     <ion-card *ngIf="meal.level > global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
-                        <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
+                        <img src="http://localhost:3000/uploads/meals/{{meal._id}}.jpg" />
                         <ion-card-header>
                             <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
                             <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
