@@ -1,13 +1,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<form action="/page/addimagetomeal" method="post" enctype="multipart/form-data">
+<form action="/page/addimagetomeal" id="uploadform" method="post" enctype="multipart/form-data">
     Ingredients<br>
 
     <div class="mealcontainer"></div>
 
-    <input type="file" name="filetoupload"><br>
+    <input id="image-file" type="file" name="filetoupload"><br>
 
-    <input type="submit" value="Submit">
+    <input class="btn-submit" id="btn-submit" type="button" value="Submit">
 </form>
 
 
@@ -24,9 +24,25 @@
                 options += "<option value=" + d._id + ">" + d.name + "</option>";
             })
 
-            $(mealcontainer).append('<select name="mealid"> ' + options + ' </select>');
+            $(mealcontainer).append('<select id="mealid" name="mealid"> ' + options + ' </select>');
 
         });
     });
+
+    $(document).ready(function() {
+        var submit = $(".btn-submit");
+
+        $(submit).click(function(e) {
+            e.preventDefault();
+
+            // We change the value of the url to know which meal we want to upload the image of
+            document.getElementById("uploadform").action += ( "/" + document.getElementById("mealid").value);
+            document.getElementById("uploadform").submit();
+        });
+    });
+
+
+
+
 
 </script>

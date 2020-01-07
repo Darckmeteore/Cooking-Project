@@ -64,12 +64,12 @@ router.get('/page/addimagetomeal', (req, res) => {
 });
 
 // Page to create an Ingredient
-router.post('/page/addimagetoingredient', (req, res) => {
+router.post('/page/addimagetoingredient/:id', (req, res) => {
     controller.addImageToIngredient(req, res);
 });
 
 // Page to create a meal
-router.post('/page/addimagetomeal', (req, res) => {
+router.post('/page/addimagetomeal/:id', (req, res) => {
     controller.addImageToMeal(req, res);
 });
 

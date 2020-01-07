@@ -68,10 +68,7 @@ function getMeal(req, res) {
         if (err) throw err;
         res.json(meal);
     });
-
-
 }
-
 
 function createDummy(req, res) {
     const Models = require('../models');
@@ -202,11 +199,10 @@ function addImageToMeal(req, res) {
     const mv = require('mv');
     const form = new formidable.IncomingForm();
 
-    console.log(req.body);
-
     form.parse(req, function (err, fields, files) {
         let oldpath = files.filetoupload.path;
-        let newpath = path.join(__dirname, '../../public/uploads/meals/') + req.body.mealid + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+        let newpath = path.join(__dirname, '../../public/uploads/meals/') + req.params.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+        console.log(newpath);
         mv(oldpath, newpath, function (err) {
             if (err) throw err;
 
@@ -226,7 +222,7 @@ function addImageToIngredient(req, res) {
 
      form.parse(req, function (err, fields, files) {
            let oldpath = files.filetoupload.path;
-           let newpath = path.join(__dirname, '../../public/uploads/ingredients/') + req.body.ingredientid + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
+           let newpath = path.join(__dirname, '../../public/uploads/ingredients/') + req.params.id + files.filetoupload.name.match(/\.[0-9a-z]+$/i)[0];
            mv(oldpath, newpath, function (err) {
                if (err) throw err;
 
