@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-modal-page',
@@ -9,7 +10,7 @@ import { ModalController } from '@ionic/angular';
 export class ModalPagePage implements OnInit {
   // Data passed in by componentProps
   
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController,private http : HttpClient,) { }
   
   public review = {
     description: '',
@@ -19,7 +20,14 @@ export class ModalPagePage implements OnInit {
 
   };
   logForm() {
-    console.log(this.review)
+        
+    this.http.post('http://localhost:3000/api/createreview',{description: this.review.description, recommande: this.review.recommande , diet: this.review.diet, hard: this.review.hard})
+      .subscribe(data => {
+        console.log(data);
+        }, error => {
+        console.log(error);
+      });
+      this.close();
   }
   
   
