@@ -183,6 +183,23 @@ function getIngredient(req, res) {
 
 }
 
+function createReview(req,res){
+    const Models = require('../models');
+    const newReview = Models.Review({
+        description: req.body.description,
+        recommande: req.body.recommande,
+        diet: req.body.diet,
+        hard: req.body.hard
+        
+    });
+    newReview.save(function (err) {
+        if (err) throw err;
+        res.json({
+            info: 'Success'
+        });
+    });
+}
+
 function createIngredient(req, res) {
     const Models = require('../models');
 
@@ -222,6 +239,7 @@ function createIngredient(req, res) {
     });
 }
 
+module.exports.createReview = createReview;
 module.exports.getUser = getUser;
 module.exports.creatlogindata = creatlogindata;
 module.exports.getMeal = getMeal;

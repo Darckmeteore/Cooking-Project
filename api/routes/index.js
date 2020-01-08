@@ -53,5 +53,9 @@ router.get('/page/createmeal', (req, res) => {
     controller.goToCreateMeal(req, res);
 });
 
+router.post('/api/createreview',(req,res) => {
+    controller.createReview(req,res);
+});
+
 
 module.exports = router;
