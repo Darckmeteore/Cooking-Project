@@ -8,6 +8,8 @@ basic functionality of our IONIC application:
 - Users can see recipes proposed by the administrator but also unlock new recipes with a level system.
 - Users can post an opinion on the proposed recipes.
 
+The application was created with the goal of cooking while having fun! We have created all kinds of recipes to satisfy a large number of people. Moreover in our application we find the nutritional facts of the food or dishes. 
+
 ## how to use it
 
 ### Prerequisite :
