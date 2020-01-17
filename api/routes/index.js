@@ -76,8 +76,5 @@ router.post('/page/addimagetomeal/:id', (req, res) => {
     controller.addImageToMeal(req, res);
 });
 
-router.get('/api/LoginData/info', (req, res) => {
-    controller.getinfologindata(req, res); 
-});
 
 module.exports = router;

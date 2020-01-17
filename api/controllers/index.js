@@ -250,6 +250,10 @@ function addImageToIngredient(req, res) {
      });
 }
 
+function getinfologindata(req,res){
+
+}
+
 module.exports.createReview = createReview;
 module.exports.getUser = getUser;
 module.exports.creatlogindata = creatlogindata;
