@@ -1,5 +1,5 @@
 # Cook-King app
-<img align="right" src="https://www.logolynx.com/images/logolynx/2e/2e9b0b5a1e3480cbea4cf95378ba5493.jpeg" width="350" alt="accessibility text">
+<img align="right" width="100" height="100" src="https://www.logolynx.com/images/logolynx/2e/2e9b0b5a1e3480cbea4cf95378ba5493.jpeg" width="350" alt="accessibility text">
 ## descritpion
 
 ## Format de nos données
