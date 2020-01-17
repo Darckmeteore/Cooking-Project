@@ -21,7 +21,7 @@ basic functionality of our IONIC application:
 ```sh
 npm install
 ```
-3. Run the following to inisialize MongoDB
+3. Run the following to inisialize MongoDB.
 ```sh
 mkdir data
 mongod --dbpath ./data
@@ -30,23 +30,17 @@ mongod --dbpath ./data
 ```sh
 nodemon app.js
 ``` 
-5. Now to launch the application you have to go to the app directory and run the command.
+5. Now to launch the application you have to go to the app directory and run the command. (Don't forget to activate CORS in chrome)
 ```sh
 ionic serve
-``` 
-or
-```sh
-ionic lab
 ``` 
 
 ## Our data format : 
 ### recipies :
 
-id : int
-
-name : string
-
-ingredients : list of ids
+id : int.
+name : string.
+ingredients : list of ids.
 
 realisation : string
 
