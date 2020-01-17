@@ -1,4 +1,4 @@
-<p align="center"> <img src="logo.jpg" <p>
+<p align="center"> <img src="logo.png" <p>
 
 ## Description :
 This is a project in fullstack. We developed an ionic4 food application using REST api with Angular and Mongo database. 
