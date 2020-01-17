@@ -6,10 +6,12 @@
   </ion-header>
 
   <ion-content fullscreen>
-    <ion-list-header>Default</ion-list-header>
+    <ion-list-header>{{ global.user.pseudo }}</ion-list-header>
     <ion-avatar class="ion-margin-start">
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
     </ion-avatar>
-    <ion-list-header>lvl</ion-list-header>
+    <ion-list-header>My level is {{ global.user.level }} ( {{ global.user.exp }} EXP )</ion-list-header>
+    <ion-list-header>create at {{ global.user.createdAt }}</ion-list-header>
+    <ion-list-header>My email is {{ global.user.email }}</ion-list-header>
   </ion-content>
 </ion-app>
