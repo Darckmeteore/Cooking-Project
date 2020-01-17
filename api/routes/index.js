@@ -54,7 +54,26 @@ router.get('/page/createmeal', (req, res) => {
 });
 
 router.post('/api/createreview',(req,res) => {
-    controller.createReview(req,res);
+    controller.createReview(req,res
+// Page to create an Ingredient
+router.get('/page/addimagetoingredient', (req, res) => {
+    controller.goToAddImageToIngredient(req, res);
+});
+
+// Page to create a meal
+router.get('/page/addimagetomeal', (req, res) => {
+    controller.goToAddImageToMeal(req, res);
+});
+
+// Page to create an Ingredient
+router.post('/page/addimagetoingredient/:id', (req, res) => {
+    controller.addImageToIngredient(req, res);
+});
+
+// Page to create a meal
+router.post('/page/addimagetomeal/:id', (req, res) => {
+    controller.addImageToMeal(req, res);
+
 });
 
 

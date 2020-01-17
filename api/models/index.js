@@ -1,3 +1,4 @@
+
 //Ce fichier contient le schéma des LoginData
 
 

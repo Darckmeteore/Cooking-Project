@@ -1,0 +1,91 @@
+{
+    "_id": ObjectId("582d43d18ec3f432f3260682"),
+    "patientid": ObjectId("582aacff3894c3afd7ad4677"),
+    "doctorid": ObjectId("582a80c93894c3afd7ad4675"),
+    "medicalcondition": "high fever, cough, runny nose.",
+    "diagnosis": "Viral Flu",
+    "addmissiondate": "2016-01-12",
+    "dischargedate": "2016-01-16",
+    "bhtno": "125",
+    "prescription": [{
+            "drug": ObjectId("58345e0e996d340bd8126149"),
+            "instructions": "Take 2 daily, after meals."
+        },
+        {
+            "drug": ObjectId("5836bc0b291918eb42966320"),
+            "instructions": "Take 1 daily, after meals."
+        }
+    ]
+}
+
+{
+    "_id": ObjectId("58345e0e996d340bd8126149"),
+    "genericname": "Paracetamol Tab 500mg",
+    "type": "X",
+    "isbrand": false
+}
+
+db.diagnoses.aggregate([{
+        "$addFields": {
+            "prescription": {
+                "$ifNull": ["$prescription", []]
+            }
+        }
+    },
+    {
+        "$lookup": {
+            "from": "drugs",
+            "localField": "prescription.drug",
+            "foreignField": "_id",
+            "as": "prescription.drug"
+        }
+    }
+])
+
+db.meals.aggregate([{
+        "$addFields": {
+            "ingredients": {
+                "$ifNull": ["$ingredients", []]
+            }
+        }
+    },
+    {
+        "$lookup": {
+            "from": "ingredients",
+            "localField": "ingredients.ingredient",
+            "foreignField": "_id",
+            "as": "ingredients.ingredient"
+        }
+    }
+])
+
+{
+    "level": 0,
+    "exp": 0,
+    "name": "Mousse au moules",
+    "ingredients": [{
+        "quantity": 1,
+        "ingredient": ObjectId("5de522e14a4a1c02a00b3d16")
+    }, {
+        "quantity": 2,
+        "ingredient": ObjectId("5de5230b4a4a1c02a00b3d18")
+    }, {
+        "quantity": 3,
+        "ingredient": ObjectId("5de523004a4a1c02a00b3d17")
+    }],
+    "realisation": "Blablabla",
+    "steps": {
+        "1": "Okay",
+        "2": "Yes",
+        "3": "Fini"
+    },
+    "createdAt": "2019-12-03T20:18:40.419Z"
+}
+
+{
+    "_id": ObjectId("5de522e14a4a1c02a00b3d16"),
+    "name": "Carotte",
+    "benefits": "Mes fesses",
+    "things_to_know": "eazeaz",
+    "__v": 0
+}

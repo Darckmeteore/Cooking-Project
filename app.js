@@ -30,7 +30,6 @@ app.listen(3000);
 console.log("waiting on localhost:3000");
 
 
-
 //Pour se connecter à la DB
 
 const mongoose = require('mongoose');

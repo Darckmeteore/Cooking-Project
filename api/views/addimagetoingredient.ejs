@@ -1,0 +1,43 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<form action="/page/addimagetoingredient" id="uploadform" method="post" enctype="multipart/form-data">
+    Ingredients<br>
+
+    <div class="ingredientcontainer"></div>
+
+    <input id="image-file" type="file" name="filetoupload"><br>
+
+    <input class="btn-submit" id="btn-submit" type="button" value="Submit">
+</form>
+
+<script>
+
+    $.getJSON('/api/ingredients', function(data) {
+        $(document).ready(function() {
+
+            var ingredientcontainer = $(".ingredientcontainer");
+
+            var options = "";
+
+            data.forEach(function (d) {
+                options += "<option value=" + d._id + ">" + d.name + "</option>";
+            })
+
+            $(ingredientcontainer).append('<select id="ingredientid" name="ingredientid"> ' + options + ' </select>');
+
+        });
+    });
+
+    $(document).ready(function() {
+        var submit = $(".btn-submit");
+
+        $(submit).click(function(e) {
+            e.preventDefault();
+
+            // We change the value of the url to know which meal we want to upload the image of
+            document.getElementById("uploadform").action += ( "/" + document.getElementById("ingredientid").value);
+            document.getElementById("uploadform").submit();
+        });
+    });
+
+</script>
