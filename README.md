@@ -8,7 +8,24 @@ basic functionality of our IONIC application:
 - Users can see recipes proposed by the administrator but also unlock new recipes with a level system
 - Users can post an opinion on the proposed recipes
 
+## how to use it
 
+### Prerequisite :
+1. We use Mongodb (NoSql) as database https://www.mongodb.com/ (link to install mongodb).
+2. Download and install NodeJS https://nodejs.org/en/.
+3. if you want to make requests and be able to use the application form you have to install. Download and install CORS https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en (to let your navigator acces to your DB).
+
+### To run the app :
+1. Clone the git
+2. Go to the folder to execute the following command to install all packages
+```sh
+npm install
+```
+3. Run the following to inisialize MongoDB
+```sh
+mkdir data
+mongod --dbpath ./data
+```
 
 ## Our data format : 
 ### recipies :
