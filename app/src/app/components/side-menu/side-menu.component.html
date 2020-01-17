@@ -8,24 +8,24 @@
   <ion-content>
     <ion-list>
 
-      <ion-item (click)="toHome()" detail>
+      <ion-item detail>
         <ion-icon name="home" slot="start"></ion-icon>
-        <ion-label>Home</ion-label>
+        <ion-button (click)="toHome()">Home</ion-button>
       </ion-item>
 
-      <ion-item (click)="toProfile()" detail>
+      <ion-item detail>
         <ion-icon name="person" slot="start"></ion-icon>
-        <ion-label>Profile</ion-label>
+        <ion-button (click)="toProfile()">Profile</ion-button>
       </ion-item>
 
       <ion-item (click)="toMessages()" detail>
         <ion-icon name="chatbubbles" slot="start"></ion-icon>
-        <ion-label>Messages</ion-label>
+        <ion-button (click)="toMessages()">Messages</ion-button>
       </ion-item>
 
       <ion-item (click)="toSettings()" detail> 
         <ion-icon name="settings" slot="start"></ion-icon>
-        <ion-label>Settings</ion-label>
+        <ion-button (click)="toSettings()">Settings</ion-button>
       </ion-item>
 
       <ion-item>
