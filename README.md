@@ -35,7 +35,7 @@ nodemon app.js
 ionic serve
 ``` 
 
-
+ 
 
 #### Have fun!
 David, Clement, Antonin
