@@ -49,15 +49,11 @@ ionic serve
 
 ### ingredient :
 
-id : int
-
-name : string
-
-benefits : string
-
-things_to_know : string
-
-picture : this is like ingredient/id.png
+- id : int
+- name : string
+- benefits : string
+- things_to_know : string
+- picture : this is like ingredient/id.png
 
 
 #### Have fun!
