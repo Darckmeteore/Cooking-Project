@@ -10,10 +10,15 @@ const routes: Routes = [
   { path: 'signup', loadChildren: './signup/signup.module#SignupPageModule' },
   { path: 'meal/:id', loadChildren: './meal/meal.module#MealPageModule', canActivate: [AuthGuard] },
   { path: 'meals', loadChildren: './meals/meals.module#MealsPageModule', canActivate: [AuthGuard] },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoginGuard] },  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule', canActivate: [LoginGuard] },
+  { path: 'logout', loadChildren: './logout/logout.module#LogoutPageModule' },
+
+  { path: 'modal-page', loadChildren: './modal-page/modal-page.module#ModalPagePageModule' },
+
   { path: 'profile', loadChildren: './profile/profile.module#ProfilePageModule' },
   { path: 'messages', loadChildren: './messages/messages.module#MessagesPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
+
 
 
 ];

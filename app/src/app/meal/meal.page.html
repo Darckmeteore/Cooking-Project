@@ -1,3 +1,4 @@
+
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
@@ -54,7 +55,7 @@
                 <ion-text style="text-align: justify; text-justify: inter-word;">
                     <h1>Vous avez fait ce plat ? Alors partagez le à vos amis et gagnez de l'expérience pour pouvoir avoir acces à d'autres plats !</h1>
                     <br>
-                    <ion-button expand="block" onclick="shareYourMeal()">Partager son plat</ion-button>
+                    <ion-button expand="block" (click)="openModal()">Partager son plat</ion-button>
                 </ion-text>
 
             </ion-card-content>

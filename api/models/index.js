@@ -1,3 +1,4 @@
+
 //Ce fichier contient le schéma des LoginData
 
 
@@ -18,13 +19,13 @@ const LoginDataSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    level: {
-        type: Number,
-        default: 1
-    },
-    exp: {
+    leveluser: {
         type: Number,
         default: 0
+    },
+    leveluser: {
+        type: Object,
+        default: {}
     }
 });
 
@@ -49,8 +50,18 @@ const IngredientSchema = new Schema({
     things_to_know: String
 });
 
+
+const ReviewSchema = new Schema({
+    description: String,
+    recommande:Boolean,
+    diet:Boolean,
+    hard:Boolean
+    
+});
+
 module.exports = {
     LoginData: mongoose.model('LoginData', LoginDataSchema),
     Meal: mongoose.model('Meal', MealSchema),
-    Ingredient: mongoose.model('Ingredient', IngredientSchema)
+    Ingredient: mongoose.model('Ingredient', IngredientSchema),
+    Review: mongoose.model('Review',ReviewSchema)
 };
