@@ -47,6 +47,7 @@ export class MealsPage {
     this.getMeals();
   }
 
+  
   /**
    * Informs that the job is done
    * @param id
