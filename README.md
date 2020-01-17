@@ -38,9 +38,11 @@ ionic serve
 ## Our data format : 
 ### recipies :
 
-id : int.
-name : string.
-ingredients : list of ids.
+id : int
+
+name : string
+
+ingredients : list of ids
 
 realisation : string
 
@@ -63,3 +65,7 @@ benefits : string
 things_to_know : string
 
 picture : this is like ingredient/id.png
+
+
+#### Have fun!
+David, Clement, Antonin
