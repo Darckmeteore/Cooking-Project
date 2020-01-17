@@ -38,21 +38,14 @@ ionic serve
 ## Our data format : 
 ### recipies :
 
-id : int
-
-name : string
-
-ingredients : list of ids
-
-realisation : string
-
-steps : list of Strings
-
-level : int
-
-exp : int
-
-picture : this is like meals/id.png
+-id : int
+-name : string
+-ingredients : list of ids
+-realisation : string
+-steps : list of Strings
+-level : int
+-exp : int
+-picture : this is like meals/id.png
 
 ### ingredient :
 
