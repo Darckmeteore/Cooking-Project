@@ -1,4 +1,4 @@
-<center>![alt text](logo.jpg)</center>
+![CooKING](logo.jpg)
 
 ## Description :
 This is a project in fullstack. We developed an ionic4 food application using REST api callbacks with Angular and Mongo database. 
