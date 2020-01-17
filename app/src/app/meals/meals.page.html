@@ -1,5 +1,3 @@
-
-
 <ion-app>
 
     <app-side-menu></app-side-menu>
@@ -20,8 +18,6 @@
 
 
         <ion-content class="ion-padding">
-
-
             <ion-list *ngFor="let meal of meals">
                 <ion-card *ngIf="meal.level <= global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
                     <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
