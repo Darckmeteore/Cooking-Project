@@ -1,4 +1,3 @@
-# Cook-King app
 ![alt text](logo.jpg)
 
 ## decription
