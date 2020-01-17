@@ -1,7 +1,8 @@
-# JCP-diet
+# Cook-King
 <img src="https://www.logolynx.com/images/logolynx/2e/2e9b0b5a1e3480cbea4cf95378ba5493.jpeg" width="350" alt="accessibility text">
 
-## Format d'une recette :
+## Format de nos données
+### Format d'une recette :
 
 id : int
 
@@ -19,7 +20,7 @@ exp : int
 
 picture : this is like meals/id.png
 
-## Format d'un ingredient
+### Format d'un ingredient
 
 id : int
 
