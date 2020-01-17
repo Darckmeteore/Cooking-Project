@@ -39,3 +39,9 @@ ionic serve
 
 #### Have fun!
 David, Clement, Antonin
+
+
+#### contact us
+David PETIT : david.petit@etu.univ-smb.fr
+Clement DECOOPMAN : clement.decoopman@etu.univ-smb.fr
+Antonin ROSA-MARTIN : antonin.martin.rosa@etu.univ-smb.fr
