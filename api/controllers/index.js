@@ -17,15 +17,7 @@ function creatlogindata(req, res) {
     const newLoginData = Models.LoginData({
         pseudo: req.body.pseudo,
         email: req.body.email,
-        password: req.body.password,
-        exp: {
-            type: Number,
-            default: 0
-        },
-        level: {
-            type: Number,
-            default: 1
-        }
+        password: req.body.password
     });
     newLoginData.save(function (err) {
         if (err) throw err;
