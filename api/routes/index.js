@@ -54,7 +54,8 @@ router.get('/page/createmeal', (req, res) => {
 });
 
 router.post('/api/createreview',(req,res) => {
-    controller.createReview(req,res
+    controller.createReview(req,res);
+});
 // Page to create an Ingredient
 router.get('/page/addimagetoingredient', (req, res) => {
     controller.goToAddImageToIngredient(req, res);
@@ -75,6 +76,5 @@ router.post('/page/addimagetomeal/:id', (req, res) => {
     controller.addImageToMeal(req, res);
 
 });
-
 
 module.exports = router;
