@@ -19,8 +19,6 @@ export class SignupPage implements OnInit {
   signupForm : FormGroup;
   validation_messages : {};
 
-  public JCP = "mrtlagrossesalopedu74";
-
 
 /**
  * CONSTRUCTOR
@@ -86,15 +84,14 @@ constructor(private http : HttpClient,
 
       let userInput = this.signup;
     
-      this.http.get('http://localhost:3000/api/signup/' + userInput['email'])
+      this.http.get('http://localhost:3000/api/LoginData/' + userInput['email'])
       .subscribe( (data : any[]) => {
-        console.log(data);
 
         // CHECK EXISTING USER
         if (data.length == 0) {
           console.log("data = nul we can create a user");
           userInput['password'] = bcrypt.hashSync(userInput['password']);
-          this.http.post('http://localhost:3000/api/signup',{pseudo: userInput['pseudo'], email: userInput['email'] , password: userInput['password']})
+          this.http.post('http://localhost:3000/api/LoginData',{pseudo: userInput['pseudo'], email: userInput['email'] , password: userInput['password']})
           .subscribe(data => {
             console.log(data['_body']);
             }, error => {

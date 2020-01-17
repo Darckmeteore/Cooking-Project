@@ -74,7 +74,6 @@ router.post('/page/addimagetoingredient/:id', (req, res) => {
 // Page to create a meal
 router.post('/page/addimagetomeal/:id', (req, res) => {
     controller.addImageToMeal(req, res);
-
 });
 
 module.exports = router;
