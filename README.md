@@ -1,5 +1,5 @@
 # Cook-King app
-![alt text](logo.jpeg)
+![alt text](logo.jpg)
 
 ## decription
 
