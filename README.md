@@ -1,4 +1,4 @@
-<p align="center"> ![CooKING](logo.jpg) <p>
+<p align="center"> <img src="logo.jpg" <p>
 
 ## Description :
 This is a project in fullstack. We developed an ionic4 food application using REST api callbacks with Angular and Mongo database. 
