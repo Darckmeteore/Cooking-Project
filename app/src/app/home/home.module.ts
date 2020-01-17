@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { SideMenuComponent } from '../components/side-menu/side-menu.component';
 
 @NgModule({
   imports: [

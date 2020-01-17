@@ -1,38 +1,37 @@
+
+
 <ion-app>
-    <!-- 
 
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>Antonin ROSA-MARTIN</ion-title>
-    </ion-toolbar>
-
-    <ion-toolbar>
-        <ion-title slot="end">Niveau 15</ion-title>
-    </ion-toolbar>
-</ion-header>
-
-
+    <app-side-menu></app-side-menu>
 
     <div class="ion-page" main>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Menu - Basic</ion-title>
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title> Hello {{ global.user.pseudo }} </ion-title>
+            </ion-toolbar>
+
+            <ion-toolbar>
+                <ion-title slot="end">Your are level {{ global.user.level }}</ion-title>
             </ion-toolbar>
         </ion-header>
+
+
         <ion-content class="ion-padding">
 
+
             <ion-list *ngFor="let meal of meals">
-                <ion-card *ngIf="meal.level <= 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
+                <ion-card *ngIf="meal.level <= global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
                     <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
                     <ion-card-header>
                         <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
                         <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
                     </ion-card-header>
                 </ion-card>
-                <ion-card *ngIf="meal.level > 1" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
+
+                <ion-card *ngIf="meal.level > global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
                     <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
                     <ion-card-header>
                         <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
@@ -42,87 +41,4 @@
             </ion-list>
         </ion-content>
     </div>
-
 </ion-app>
-
--->
-
-    <ion-app>
-        <ion-menu side="start">
-            <ion-header>
-                <ion-toolbar translucent>
-                    <ion-title>Menu</ion-title>
-                </ion-toolbar>
-            </ion-header>
-            <ion-content>
-                <ion-list>
-                    <ion-item (click)="toHome()">
-                        <ion-icon name="home" slot="start"></ion-icon>
-                        <ion-label>Home</ion-label>
-                    </ion-item>
-                    <ion-item (click)="toProfile()">
-                        <ion-icon name="person" slot="start"></ion-icon>
-                        <ion-label>Profile</ion-label>
-                    </ion-item>
-                    <ion-item (click)="toMessages()">
-                        <ion-icon name="chatbubbles" slot="start"></ion-icon>
-                        <ion-label>Messages</ion-label>
-                    </ion-item>
-                    <ion-item (click)="toSettings()"> 
-                        <ion-icon name="settings" slot="start"></ion-icon>
-                        <ion-label>Settings</ion-label>
-                    </ion-item>
-                    <ion-item>
-                        <ion-button (click) ="logout()">Log Out</ion-button>
-                    </ion-item>
-                </ion-list>
-            </ion-content>
-        </ion-menu>
-
-        <div class="ion-page" main>
-            <ion-header>
-                <ion-toolbar>
-                    <ion-buttons slot="start">
-                        <ion-menu-button></ion-menu-button>
-                    </ion-buttons>
-                    <ion-title> Hello {{ global.user.pseudo }} </ion-title>
-                </ion-toolbar>
-
-                <ion-toolbar>
-                    <ion-title slot="end">Your are level {{ global.user.level }}</ion-title>
-                </ion-toolbar>
-            </ion-header>
-
-
-            <ion-content class="ion-padding">
-
-
-                <ion-list *ngFor="let meal of meals">
-                    <ion-card *ngIf="meal.level <= global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="false">
-                        <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
-                        <ion-card-header>
-                            <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
-                            <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
-                        </ion-card-header>
-                    </ion-card>
-
-                    <ion-card *ngIf="meal.level > global.user.level" routerLink="/meal/{{meal._id}}" routerDirection="root" disabled="true">
-                        <img src="https://www.techadvisor.co.uk/cmsdata/features/3672223/requestmain_thumb800.jpg" />
-                        <ion-card-header>
-                            <ion-card-title>{{meal.name}} (lvl {{meal.level}})</ion-card-title>
-                            <ion-card-subtitle>{{meal.description}}</ion-card-subtitle>
-                        </ion-card-header>
-                    </ion-card>
-                </ion-list>
-            </ion-content>
-        </div>
-    </ion-app>
-
-    <script>
-        function openMenu() {
-            document.querySelector('ion-menu-controller')
-                .open();
-        }
-    </script>
-
-    <!-- && devWidth <= 425 -->
