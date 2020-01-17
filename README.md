@@ -1,7 +1,7 @@
 <p align="center"> <img src="logo.jpg" <p>
 
 ## Description :
-This is a project in fullstack. We developed an ionic4 food application using REST api callbacks with Angular and Mongo database. 
+This is a project in fullstack. We developed an ionic4 food application using REST api with Angular and Mongo database. 
 basic functionality of our IONIC application: 
 - A totally secure login and registration system where the data is anonymized and encrypted.
 - An administrator page that allows you to easily add recipes from our Mongo database.
@@ -26,7 +26,7 @@ npm install
 mkdir data
 mongod --dbpath ./data
 ```
-4. Run the following commands to launch the app serve.
+4. Run the following commands to launch the API serve.
 ```sh
 nodemon app.js
 ``` 
@@ -35,25 +35,6 @@ nodemon app.js
 ionic serve
 ``` 
 
-## Our data format : 
-### recipies :
-
-- id : int
-- name : string
-- ingredients : list of ids
-- realisation : string
-- steps : list of Strings
-- level : int
-- exp : int
-- picture : this is like meals/id.png
-
-### ingredient :
-
-- id : int
-- name : string
-- benefits : string
-- things_to_know : string
-- picture : this is like ingredient/id.png
 
 
 #### Have fun!
