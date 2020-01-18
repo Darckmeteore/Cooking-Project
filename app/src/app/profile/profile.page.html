@@ -1,18 +1,25 @@
 <ion-app>
   <ion-header translucent>
     <ion-toolbar>
-      <ion-title>Your profil</ion-title>
+      <ion-title >Your profil <ion-icon name="logo-freebsd-devil"></ion-icon> </ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home" [text]="Back"></ion-back-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
   <ion-content fullscreen>
-    <ion-list-header color="secondary">{{ global.user.pseudo }}</ion-list-header>
-    <br>
-    <ion-avatar class="ion-margin-start">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
-    </ion-avatar>
-    <ion-list-header>My level is {{ global.user.level }} ( {{ global.user.exp }} EXP )</ion-list-header>
-    <ion-list-header>create at {{ global.user.createdAt }}</ion-list-header>
-    <ion-list-header>My email is {{ global.user.email }}</ion-list-header>
+    <ion-list>
+      <ion-item color="secondary">{{ global.user.pseudo }}</ion-item>
+      <br>
+      <ion-avatar class="ion-margin-start">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png">
+      </ion-avatar>
+      <ion-item>My level is {{ global.user.level }} ( {{ global.user.exp }} EXP ) </ion-item>
+      <ion-item > create at {{ global.user.createdAt }}  </ion-item>
+      <ion-item ><ion-icon name="mail"></ion-icon> &nbsp; {{ global.user.email }} </ion-item>      
+    </ion-list>
+    <br><br>
+    
   </ion-content>
 </ion-app>
