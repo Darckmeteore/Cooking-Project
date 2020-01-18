@@ -48,9 +48,6 @@ export class SideMenuComponent implements OnInit {
    * Redirects to home page
    */
   toHome() {
-
-    console.log("YES");
-
     this.router.navigate(['home']);
   }
 
