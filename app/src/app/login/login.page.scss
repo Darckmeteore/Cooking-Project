@@ -22,3 +22,9 @@ ion-item.ion-invalid.ion-touched{
 ion-item.ion-valid.ion-touched{
  border-bottom: 2px solid var(--ion-color-success) !important;
 }
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
