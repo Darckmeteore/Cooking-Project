@@ -59,4 +59,4 @@ David, Clement, Antonin
 #### contact us
 - David PETIT : https://github.com/Debzou/ - david.petit@etu.univ-smb.fr
 - Clement DECOOPMAN : https://github.com/NanoClem - clement.decoopman@etu.univ-smb.fr
-- Antonin ROSA-MARTIN : https://github.com/MrWormsy - antonin.martin.rosa@etu.univ-smb.fr
+- Antonin ROSA-MARTIN : https://github.com/MrWormsy - antonin.rosa-martin@etu.univ-smb.fr
